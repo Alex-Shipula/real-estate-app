@@ -1,10 +1,20 @@
+.wraperHeader {
+    display: grid;
+    justify-content: center;
+}
 .header {
+width: 1440px;
 height: 76px;
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: 1fr 4fr 1fr;
 background: #FFFFFF;
 box-shadow: 0px 4px 8px rgba(46, 48, 59, 0.06);
 align-items: center;
+}
+.headerNav {
+   display:flex;
+   flex-direction: row;
+   justify-content: center; 
 }
 .headerNavEl {
 text-decoration: none;
@@ -15,8 +25,40 @@ font-size: 16px;
 line-height: 100%;
 letter-spacing: 0.01em;
 color: #959595;
+padding-left: 50px;
+padding-right: 50px;
 }
-.headerNav {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;    
+.logoHead {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+}
+.logo {
+    padding-right: 10px;
+    width: 42px;
+    height: 42px;
+}
+.without {
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: bold;
+}
+.agency {
+    font-size:12px;
+    font-weight: 100;
+}
+.headerRight {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+}
+.lang {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-between;
+}
+.lang img {
+    padding-left: 8px;
 }
