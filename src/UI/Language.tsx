@@ -1,24 +1,23 @@
 import * as React from 'react';
-import { AccountMenuProps } from './AccountMenu.props';
 import Box from '@mui/material/Box';
-import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import myAccount from "../../img/icons/myAccount.svg";
-import menuVerification from "../../img/icons/menuVerification.svg";
-import logOut from "../../img/icons/logOut.svg";
-import menuUp from "../../img/icons/menuUp.svg";
-import menuDown from "../../img/icons/menuDown.svg";
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
-  const [anchorEl, setAnchorEl] = React.useState(null); 
+export default function Language():JSX.Element {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [lang, setLang] = React.useState("EN");
+ 
   const open = Boolean(anchorEl);
-  const handleLogOut = () => {
-      props.logOut(false);
+  const handleClickEN = () => {
+    setLang("EN");
+  };
+  const handleClickRU = () => {
+    setLang("RU");
   };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -29,11 +28,11 @@ export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Account settings">
+        <Tooltip title="Language">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-      { open ? <Avatar sx={{ width: 20, height: 20 }}><img src={menuUp}></img></Avatar> :
-            <Avatar sx={{ width: 20, height: 20 }}><img src={menuDown}></img></Avatar>}
-          </IconButton>
+              {open ? <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}><div>{lang}</div><Box sx={{ width: 20, height: 20 }}><ExpandLessIcon /></Box></Box>
+              : <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}><div>{lang}</div><Box sx={{ width: 20, height: 20 }}><ExpandMoreIcon /></Box></Box>}
+             </IconButton>
         </Tooltip>
       </Box>
       <Menu
@@ -70,23 +69,11 @@ export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-       <MenuItem>
-          <ListItemIcon>
-          <img src={myAccount}></img>
-          </ListItemIcon>
-          My account
+        <MenuItem onClick={handleClickEN}>
+          ENG
         </MenuItem>
-        <MenuItem>
-          <ListItemIcon>
-          <img src={menuVerification}></img>
-          </ListItemIcon>
-          ID Verification
-        </MenuItem>
-        <MenuItem onClick={handleLogOut}>
-          <ListItemIcon>
-          <img src={logOut}></img>
-          </ListItemIcon>
-          Log Out
+        <MenuItem onClick={handleClickRU}>
+          RUS
         </MenuItem>
       </Menu>
     </React.Fragment>

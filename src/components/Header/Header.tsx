@@ -1,14 +1,19 @@
+/* eslint-disable @typescript-eslint/semi */
+import { useState } from "react";
 import { HeaderProps } from "./Header.props";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
-import Logo from "../../img/icons/logoProj.svg";
+import Logo from "../../img/logoProj.svg";
 import Avatar from "@mui/material/Avatar";
-import AvatarTest from "../../img/avatarTest.png";
-import logoEN from "../../img/icons/ENdown.svg";
+import AvatarTest from "../../img/testAvatar.png";
+import logInButton from "../../img/buttons/loginButton.svg";
 import AccountMenu from "../../UI/AccountMenu/AccountMenu";
 import Notification from "../../UI/Notification/Notification";
+import Language from "../../UI/Language";
 
 export const Header = ({ ...props }: HeaderProps): JSX.Element => {
+  const [isAuth, setIsAuth] = useState(true);
+
   return (
     <header className={styles.wraperHeader}>
       <div className={styles.header}>
@@ -38,21 +43,28 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
             Blog
           </NavLink>
         </div>
-        <div className={styles.headerRight}>
-          <div className={styles.message}>
-            <Notification />
+        {isAuth ? (
+          <div className={styles.headerRight}>
+            <div className={styles.message}>
+              <Notification />
+            </div>
+            <Language />
+             <div className={styles.userImg}>
+              <Avatar alt="Test" src={AvatarTest} />
+            </div>
+            <div className={styles.headerMenu}>
+              <AccountMenu logOut={setIsAuth} />
+            </div>
           </div>
-          <div className={styles.lang}>
-            <div>EN</div>
-            <img src={logoEN}></img>
+        ) : (
+          <div className={styles.headerRight}>
+            <Language />
+            <NavLink className={styles.register} to="/register">REGISTER</NavLink>
+            <NavLink className={styles.logIn} to="/login" onClick={()=>{setIsAuth(true)}}>
+              <img src={logInButton}></img>  
+            </NavLink>
           </div>
-          <div className={styles.userImg}>
-            <Avatar alt="Test" src={AvatarTest} />
-          </div>
-          <div className={styles.headerMenu}>
-            <AccountMenu />
-          </div>
-        </div>
+        )}
       </div>
     </header>
   );

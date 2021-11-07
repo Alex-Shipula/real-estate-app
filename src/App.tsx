@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Marketplace from "./pages/Marketplace/Marketplace";
 import MyTokens from "./pages/MyTokens/MyTokens";
 import Wallet from "./pages/Wallet/Wallet";
+import LogIn from "./pages/LogIn/LogIn";
+import Register from "./pages/Register/Register";
 
 function App(): JSX.Element {
   return (
@@ -18,6 +20,8 @@ function App(): JSX.Element {
       <Route exact path="/wallet" component={Wallet} />
       <Route exact path="/mytokens" component={MyTokens} />
       <Route exact path="/blog" component={Blog} />
+      <Route exact path="/login" component={LogIn} />
+      <Route exact path="/register" component={Register} />
       <Route path="/404" component={Error404} />
       <Redirect to="/404" />
     </Switch>

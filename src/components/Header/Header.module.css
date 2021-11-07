@@ -18,7 +18,6 @@ align-items: center;
 }
 .headerNavEl {
 text-decoration: none;
-font-family: Roboto;
 font-style: normal;
 font-weight: normal;
 font-size: 16px;
@@ -42,10 +41,12 @@ padding-right: 50px;
     white-space: nowrap;
     font-size: 13px;
     font-weight: bold;
+    color: #252525;
 }
 .agency {
     font-size:12px;
     font-weight: 100;
+    color: #212121;
 }
 .headerRight {
     display: flex;
@@ -61,4 +62,10 @@ padding-right: 50px;
 }
 .lang img {
     padding-left: 8px;
+}
+.register {
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 100%;
+    color: #3D4CEB; 
 }
