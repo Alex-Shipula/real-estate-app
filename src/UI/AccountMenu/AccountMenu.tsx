@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useCallback,useState} from 'react';
 import { AccountMenuProps } from './AccountMenu.props';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -15,11 +15,11 @@ import menuDown from "../../img/icons/menuDown.svg";
 
 
 export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
-  const [anchorEl, setAnchorEl] = React.useState(null); 
+  const [anchorEl, setAnchorEl] = useState(null); 
   const open = Boolean(anchorEl);
-  const handleLogOut = () => {
+  const handleLogOut = useCallback(() => {
       props.logOut(false);
-  };
+  },[false]);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -27,7 +27,7 @@ export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
     setAnchorEl(null);
   };
   return (
-    <React.Fragment>
+    <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Account settings">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
@@ -89,6 +89,6 @@ export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
           Log Out
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,8 +9,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 export default function Language():JSX.Element {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [lang, setLang] = React.useState("EN");
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [lang, setLang] = useState("EN");
  
   const open = Boolean(anchorEl);
   const handleClickEN = () => {
@@ -26,7 +26,7 @@ export default function Language():JSX.Element {
     setAnchorEl(null);
   };
   return (
-    <React.Fragment>
+    <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Language">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
@@ -76,6 +76,6 @@ export default function Language():JSX.Element {
           RUS
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </>
   );
 }

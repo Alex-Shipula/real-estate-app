@@ -11,7 +11,11 @@ import AccountMenu from "../../UI/AccountMenu/AccountMenu";
 import Notification from "../../UI/Notification/Notification";
 import Language from "../../UI/Language";
 
+const logoAg = "AGENCY";
+const logoWB = "WITHOUT BORDERS";
+
 export const Header = ({ ...props }: HeaderProps): JSX.Element => {
+
   const [isAuth, setIsAuth] = useState(true);
 
   return (
@@ -22,8 +26,8 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
             <img className={styles.logoBig} src={Logo}></img>
           </NavLink>
           <div className={styles.logoText}>
-            <div className={styles.agency}>AGENCY</div>
-            <div className={styles.without}>WITHOUT BORDERS</div>
+            <div className={styles.agency}>{logoAg}</div>
+            <div className={styles.without}>{logoWB}</div>
           </div>
         </div>
         <div className={styles.headerNav}>

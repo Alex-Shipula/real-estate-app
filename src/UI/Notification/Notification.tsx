@@ -1,4 +1,4 @@
-import * as React from "react";
+import {useState,useMemo} from "react";
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,20 +8,11 @@ import Tooltip from "@mui/material/Tooltip";
 import { NotificationProps } from "./Notification.props";
 import BellBadge from "../BellBadge";
 
-const options = [
-  "New Payment",
-  "New Payment",
-  "New Payment",
-  "New Payment",
-  "New Payment",
-  "New Payment",
-  "New Payment",
-];
-
 const date = new Date();
 
 export default function Notification({...props}: NotificationProps): JSX.Element {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const options = useMemo(() => ["New Payment","New Payment","New Payment","New Payment","New Payment","New Payment","New Payment"],[]);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,7 +21,7 @@ export default function Notification({...props}: NotificationProps): JSX.Element
     setAnchorEl(null);
   };
   return (
-    <React.Fragment>
+    <>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Notification">
           <IconButton onClick={handleClick}>
@@ -110,6 +101,6 @@ export default function Notification({...props}: NotificationProps): JSX.Element
           </div>
         ))}
       </Menu>
-    </React.Fragment>
+    </>
   );
 }
