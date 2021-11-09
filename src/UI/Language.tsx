@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useCallback} from 'react';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,17 +7,21 @@ import Tooltip from '@mui/material/Tooltip';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+const menuLang = {
+  en: "EN",
+  ru: "RU"
+};
 
 export default function Language():JSX.Element {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [lang, setLang] = useState("EN");
+  const [lang, setLang] = useState(menuLang.en);
  
   const open = Boolean(anchorEl);
   const handleClickEN = () => {
-    setLang("EN");
+    setLang(menuLang.en);
   };
   const handleClickRU = () => {
-    setLang("RU");
+    setLang(menuLang.ru);
   };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -70,10 +74,10 @@ export default function Language():JSX.Element {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem onClick={handleClickEN}>
-          ENG
+          {menuLang.en}
         </MenuItem>
         <MenuItem onClick={handleClickRU}>
-          RUS
+          {menuLang.ru}
         </MenuItem>
       </Menu>
     </>

@@ -13,13 +13,18 @@ import logOut from "../../img/icons/logOut.svg";
 import menuUp from "../../img/icons/menuUp.svg";
 import menuDown from "../../img/icons/menuDown.svg";
 
+ const menu = {
+   myacc:"My account",
+   idver:"ID Verification",
+   logout:"Log Out"
+ };
 
 export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
   const [anchorEl, setAnchorEl] = useState(null); 
   const open = Boolean(anchorEl);
   const handleLogOut = useCallback(() => {
       props.logOut(false);
-  },[false]);
+  },[props.logOut]);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -74,19 +79,19 @@ export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
           <ListItemIcon>
           <img src={myAccount}></img>
           </ListItemIcon>
-          My account
+          {menu.myacc}
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
           <img src={menuVerification}></img>
           </ListItemIcon>
-          ID Verification
+          {menu.idver}
         </MenuItem>
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
           <img src={logOut}></img>
           </ListItemIcon>
-          Log Out
+          {menu.logout}
         </MenuItem>
       </Menu>
     </>

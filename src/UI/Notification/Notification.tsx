@@ -9,9 +9,15 @@ import { NotificationProps } from "./Notification.props";
 import BellBadge from "../BellBadge";
 
 const date = new Date();
+const payments = {
+  not:"Notification",
+  userread: "all as read",
+  resiv: "You received a new payment"
+};
 
 export default function Notification({...props}: NotificationProps): JSX.Element {
   const options = useMemo(() => ["New Payment","New Payment","New Payment","New Payment","New Payment","New Payment","New Payment"],[]);
+  const [userName, setUserName] = useState("Mark");
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -73,8 +79,8 @@ export default function Notification({...props}: NotificationProps): JSX.Element
             justifyContent: "space-between",
           }}
         >
-          <div>Notification</div>
-          <div> Mark all as read </div>
+          <div>{payments.not}</div>
+          <div>{`${userName} ${payments.userread}`}</div>
         </Box>
         <Divider />
         {options.map((option) => (
@@ -92,7 +98,7 @@ export default function Notification({...props}: NotificationProps): JSX.Element
               >
                 <div>
                   {option}
-                  <div>You received a new payment</div>
+                  <div>{payments.resiv}</div>
                 </div>
                 <div>{`${date.getDate()},${date.getMonth()} ${date.getHours()}:${date.getMinutes()}`}</div>
               </Box>

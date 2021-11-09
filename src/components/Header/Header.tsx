@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/semi */
-import { useState } from "react";
+import { useState,useCallback } from "react";
 import { HeaderProps } from "./Header.props";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
@@ -11,12 +11,23 @@ import AccountMenu from "../../UI/AccountMenu/AccountMenu";
 import Notification from "../../UI/Notification/Notification";
 import Language from "../../UI/Language";
 
-const logoAg = "AGENCY";
-const logoWB = "WITHOUT BORDERS";
+const headStr = {
+  logoAg: "AGENCY",
+  logoWB: "WITHOUT BORDERS",
+  mark: "Marketplace",
+  dash: "Dashboard",
+  wall: "Wallet",
+  mytok: "My Tokens",
+  blog: "Blog",
+  reg: "REGISTER"
+}
 
 export const Header = ({ ...props }: HeaderProps): JSX.Element => {
 
   const [isAuth, setIsAuth] = useState(true);
+  const handlerLogIn = () => {
+    setIsAuth(true)
+  };
 
   return (
     <header className={styles.wraperHeader}>
@@ -26,25 +37,25 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
             <img className={styles.logoBig} src={Logo}></img>
           </NavLink>
           <div className={styles.logoText}>
-            <div className={styles.agency}>{logoAg}</div>
-            <div className={styles.without}>{logoWB}</div>
+            <div className={styles.agency}>{headStr.logoAg}</div>
+            <div className={styles.without}>{headStr.logoWB}</div>
           </div>
         </div>
         <div className={styles.headerNav}>
           <NavLink className={styles.headerNavEl} to="/marketplace">
-            Marketplace
+            {headStr.mark}
           </NavLink>
           <NavLink className={styles.headerNavEl} to="/dashboard">
-            Dashboard
+            {headStr.dash}
           </NavLink>
           <NavLink className={styles.headerNavEl} to="/wallet">
-            Wallet
+            {headStr.wall}
           </NavLink>
           <NavLink className={styles.headerNavEl} to="/mytokens">
-            My Tokens
+            {headStr.mytok}
           </NavLink>
           <NavLink className={styles.headerNavEl} to="/blog">
-            Blog
+            {headStr.blog}
           </NavLink>
         </div>
         {isAuth ? (
@@ -63,8 +74,8 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
         ) : (
           <div className={styles.headerRight}>
             <Language />
-            <NavLink className={styles.register} to="/register">REGISTER</NavLink>
-            <NavLink className={styles.logIn} to="/login" onClick={()=>{setIsAuth(true)}}>
+            <NavLink className={styles.register} to="/register">{headStr.reg}</NavLink>
+            <NavLink className={styles.logIn} to="/login" onClick={handlerLogIn}>
               <img src={logInButton}></img>  
             </NavLink>
           </div>
