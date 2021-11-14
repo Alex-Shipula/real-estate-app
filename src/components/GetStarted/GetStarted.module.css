@@ -1,6 +1,7 @@
 .wrapperGetStarted {
    display: grid;
-   justify-content: center; 
+   justify-content: center;
+   height: 420px; 
 }
 .getStarted {
    width: 1440px;
@@ -10,12 +11,14 @@
    padding-top: 60px;
 }
 .headText {
+max-width: 620px;
 font-family: Roboto;
 font-style: normal;
 font-weight: bold;
 font-size: 48px;
 line-height: 56px;
 color: #4B4B4B;
+padding-bottom: 48px;
 }
 .ownership {
 font-family: Roboto;
@@ -24,14 +27,17 @@ font-weight: 500;
 font-size: 26px;
 line-height: 30px;
 color: #4B4B4B;
+padding-bottom: 16px;
 }
 .smallText{
+max-width: 620px;
 font-family: Roboto;
 font-style: normal;
 font-weight: normal;
 font-size: 18px;
 line-height: 21px;
 color: #959595;
+padding-bottom: 24px;
 }
 .left {
    display: flex;
@@ -39,11 +45,27 @@ color: #959595;
    justify-content: flex-start;
 }
 
-/* .rightImgBack{
-   position:relative;
-}
-.rightImg {
-   position: absolute;
-   top: -60px;
-   left: -60px;
-} */
+.right {
+   display: grid;
+   position: relative; 
+   grid-template-columns: repeat(12, 1fr);
+ }
+ 
+ .rightImgBack {
+    width: 545px;
+    height: 333px;
+    padding-right: 80px;
+    grid-column: 4 / -1;
+    grid-row: 1;
+ }
+ 
+ .rightImg {
+   grid-row: 1;
+   grid-column: 4 / span 7;
+   z-index: 1;
+ }
+ 
+ .right img {
+   width: 100%;
+   display: block;
+ }
