@@ -1,0 +1,49 @@
+.wrapperGetStarted {
+   display: grid;
+   justify-content: center; 
+}
+.getStarted {
+   width: 1440px;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   background: #E5E5E5;
+   padding-top: 60px;
+}
+.headText {
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 48px;
+line-height: 56px;
+color: #4B4B4B;
+}
+.ownership {
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 26px;
+line-height: 30px;
+color: #4B4B4B;
+}
+.smallText{
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+color: #959595;
+}
+.left {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+}
+
+/* .rightImgBack{
+   position:relative;
+}
+.rightImg {
+   position: absolute;
+   top: -60px;
+   left: -60px;
+} */

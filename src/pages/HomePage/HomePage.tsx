@@ -1,16 +1,12 @@
-import { sliderUnstyledClasses } from "@mui/core";
-import React from "react";
-import { Footer } from "../../components/Footer/Footer";
-import { Header } from "../../components/Header/Header";
+
+import { GetStarted } from "../../components/GetStarted/GetStarted";
 import styles from "./HomePage.module.css";
 
 function HomePage(): JSX.Element {
   return (
     <div className={styles.wrapperHome}>
       <div className={styles.homePage}>
-        <Header />
-        <h1 className={styles.pageTitle}>HomePage</h1>
-        <Footer />
+        <GetStarted />
       </div>
     </div>
   );

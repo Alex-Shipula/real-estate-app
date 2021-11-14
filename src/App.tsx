@@ -10,21 +10,24 @@ import MyTokens from "./pages/MyTokens/MyTokens";
 import Wallet from "./pages/Wallet/Wallet";
 import LogIn from "./pages/LogIn/LogIn";
 import Register from "./pages/Register/Register";
+import { Layout } from "./components/Layout/Layout";
 
 function App(): JSX.Element {
   return (
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/marketplace" component={Marketplace} />
-      <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/wallet" component={Wallet} />
-      <Route exact path="/mytokens" component={MyTokens} />
-      <Route exact path="/blog" component={Blog} />
-      <Route exact path="/login" component={LogIn} />
-      <Route exact path="/register" component={Register} />
-      <Route path="/404" component={Error404} />
-      <Redirect to="/404" />
-    </Switch>
+    <Layout >
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/marketplace" component={Marketplace} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/wallet" component={Wallet} />
+        <Route exact path="/mytokens" component={MyTokens} />
+        <Route exact path="/blog" component={Blog} />
+        <Route exact path="/login" component={LogIn} />
+        <Route exact path="/register" component={Register} />
+        <Route path="/404" component={Error404} />
+        <Redirect to="/404" />
+      </Switch>
+    </Layout>
   );
 }
 export default App;

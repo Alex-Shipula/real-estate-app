@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import styles from "./Footer.module.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../img/logoProj.svg";
@@ -5,15 +6,18 @@ import Logo from "../../img/logoProj.svg";
 const headStr = {
   logoAg: "AGENCY",
   logoWB: "WITHOUT BORDERS",
-  mark: "Marketplace",
-  dash: "Dashboard",
-  wall: "Wallet",
-  mytok: "My Tokens",
-  blog: "Blog",
-  reg: "REGISTER",
+  reg: "REGISTER"
 };
 
 export const Footer = (): JSX.Element => {
+  const main = useMemo(() => [
+    {name: "Marketplace",to: "/marketplace"},
+    {name: "Dashboard",to: "/dashboard"},
+    {name: "Wallet",to: "/wallet"},
+    {name: "My Tokens",to: "/mytokens"},
+    {name: "Blog",to: "/blog"}
+  ],[]);
+  
   return (
     <footer className={styles.wraperFooter}>
       <div className={styles.footer}>
@@ -45,23 +49,14 @@ export const Footer = (): JSX.Element => {
         </div>
         <div className={styles.right}>
           <div className={styles.siteMap}>Site map</div>
-          <NavLink className={styles.footerNavEl} to="/marketplace">
-            {headStr.mark}
-          </NavLink>
-          <NavLink className={styles.footerNavEl} to="/dashboard">
-            {headStr.dash}
-          </NavLink>
-          <NavLink className={styles.footerNavEl} to="/wallet">
-            {headStr.wall}
-          </NavLink>
-          <NavLink className={styles.footerNavEl} to="/mytokens">
-            {headStr.mytok}
-          </NavLink>
-          <NavLink className={styles.footerNavEl} to="/blog">
-            {headStr.blog}
-          </NavLink>
-        </div>
-      </div>
+          {main.map((val,i) => (
+            <div>
+           <NavLink key={i} className={styles.footerNavEl}  to={val.to} >
+            {val.name}
+            </NavLink>
+            </div>))}
+          </div>
+          </div>
     </footer>
   );
 };
