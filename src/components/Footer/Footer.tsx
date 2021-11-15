@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+
 import styles from "./Footer.module.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../img/logoProj.svg";
@@ -10,13 +10,13 @@ const headStr = {
 };
 
 export const Footer = (): JSX.Element => {
-  const main = useMemo(() => [
+  const main = [
     {name: "Marketplace",to: "/marketplace"},
     {name: "Dashboard",to: "/dashboard"},
     {name: "Wallet",to: "/wallet"},
     {name: "My Tokens",to: "/mytokens"},
     {name: "Blog",to: "/blog"}
-  ],[]);
+  ];
   
   return (
     <footer className={styles.wraperFooter}>
