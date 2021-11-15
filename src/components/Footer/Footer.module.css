@@ -1,0 +1,141 @@
+
+.wraperFooter {
+    display: grid;
+    justify-content: center;
+}
+.footer {
+    width: 1440px;
+    height: 262px;
+    background: #FFFFFF;
+    box-shadow: 0px -4px 8px rgba(46, 48, 59, 0.06);
+    display: grid;
+    grid-template-columns: 2fr 3fr 5fr;
+    align-items: center;
+}
+.left {
+   display:flex;
+   flex-direction: column;
+}
+.footerNavEl {
+    font-family:Roboto;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #959595;
+    padding-bottom: 8px;
+}
+.logoHead {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+  }
+  .logo {
+      padding-right: 10px;
+      width: 42px;
+      height: 42px;
+  }
+  .without {
+      font-family:Roboto;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: bold;
+      color: #252525;
+  }
+  .agency {
+      font-family:Roboto;
+      font-size:12px;
+      font-weight: 100;
+      color: #212121;
+  }
+.right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 74px;
+}
+.center {
+    padding-bottom: 40px;
+}
+.siteMap {
+  font-family:Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  padding-bottom: 8px;
+}
+.phone {
+font-family:Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+color: #4B4B4B;
+padding-bottom: 8px;
+}
+.phoneNumber {
+font-family:Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+color: #959595;
+}
+.adressText {
+font-family:Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+color: #4B4B4B;
+padding-top: 15px;
+}
+.wraperAdress {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 8px;
+}
+.adress {
+font-family:Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+color: #959595;
+}
+.year {
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 14px;
+color: #4B4B4B;
+padding-top: 48px;
+}
+.termsPrivacy {
+    display: flex;
+    flex-direction: row;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #959595;
+    padding-top: 8px;
+}
+.terms , .privacy {
+text-decoration: none;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+color: #3D4CEB;
+}
+.and {
+    padding-right: 5px;
+    padding-left: 5px;
+}
