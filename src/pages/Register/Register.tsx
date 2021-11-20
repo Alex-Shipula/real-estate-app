@@ -1,9 +1,13 @@
 
-//import styles from './Register.module.css';
+import styles from './Register.module.css';
+
+import RegistrationStepOne from "../../components/Registration/StepOne/RegistrationStepOne";
 
 function Register(): JSX.Element {
 	return (
-		<h1>Register</h1>
+		<div className={styles.wrapperRegister}>
+			<RegistrationStepOne />
+		</div>
 	);
 }
 export default Register;

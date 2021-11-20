@@ -1,0 +1,6 @@
+.wrapperRegister {
+    display: grid;
+    place-items: center;
+    height: 850px;
+    max-height: 100%;
+}
