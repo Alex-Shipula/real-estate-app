@@ -1,8 +1,8 @@
 import { call, takeLatest } from "redux-saga/effects";
-import { signUpData } from "../actions/Actions";
-import { signUp } from "./api/Api";
+import { resendConfirmEmail, signUpData } from "../actions/Actions";
+import { confirmEmail,signUp } from "./api/Api";
 import AuthLocalStorage from "../../helpers/AuthLocalStorage";
-import signUpDataType from "../Types";
+import { confirmEmailType,signUpDataType } from "../Types";
 
 
 function* SignUpWorker(action: signUpDataType) {
@@ -16,6 +16,21 @@ function* SignUpWorker(action: signUpDataType) {
   }
 }
 
-export default function* watchAuth():Generator {
+function* confirmEmailWorker(action: confirmEmailType) {
+  try {
+   const{data} = yield call(confirmEmail, action.token);
+   console.log(data);
+   
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function* watchAuth():Generator {
   yield takeLatest(signUpData, SignUpWorker);
 }
+
+export function* watchConfirmEmail():Generator {
+  yield takeLatest(resendConfirmEmail, confirmEmailWorker);
+}
+

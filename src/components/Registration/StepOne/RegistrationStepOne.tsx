@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import styles from "./RegistrationStepOne.module.css";
@@ -14,8 +14,12 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 import { signUpData } from "../../../redux/actions/Actions";
+import { RegistrationProps } from "../RegistrationProps.props";
 
-function RegistrationStepOne(): JSX.Element {
+function RegistrationStepOne({...props}:RegistrationProps): JSX.Element {
+  const handleStepNext = useCallback(() => {
+    props.step(2);
+},[props.step]);
   const [values, setValues] = useState({
     showPassword: false,
   });
@@ -52,6 +56,7 @@ function RegistrationStepOne(): JSX.Element {
     validationSchema,
     onSubmit: (values) => {
       delete values.confirmPassword;
+      handleStepNext();
       dispatch(signUpData(values));
     },
   });

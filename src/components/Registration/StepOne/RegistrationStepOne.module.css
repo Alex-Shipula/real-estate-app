@@ -39,15 +39,7 @@ margin-left: 8px;
     line-height: 16px;
     color: #3D4CEB;
     }
-.alreadyHave{
-    text-decoration: none;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-    }
-    .textPrivacy {
+.textPrivacy {
     width: 400px;
     height: 42px;
     font-family: Roboto;
@@ -59,12 +51,13 @@ margin-left: 8px;
     padding-bottom: 42px;
     margin-left: 10px;
     }
-    .button {
+.button {
     width: 400px;
     height: 43px;
     margin-left: 10px;
 }
 .alreadyHave {
+    text-decoration: none;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
