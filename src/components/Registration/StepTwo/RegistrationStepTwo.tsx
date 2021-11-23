@@ -14,21 +14,16 @@ import { RegistrationProps } from "../RegistrationProps.props";
 import arrowBack from "../../../img/icons/arrow.jpg";
 
 function RegistrationStepTwo({ ...props }: RegistrationProps): JSX.Element {
-  const [selectedResident, setSelectedResident] = useState("no");
-  const handleChangeResident = (event) => {
-    setSelectedResident(event.target.value);
-    formik.values.resident = event.target.value;
-  };
-
   const handleStepNext = useCallback(() => {
     props.step(3);
   }, [props.step]);
-
   const handleStepBack = useCallback(() => {
     props.step(1);
   }, [props.step]);
 
   const dispatch = useDispatch();
+
+  const [selectedResident, setSelectedResident] = useState("no");
 
   const validationSchema = yup.object({
     firstName: yup.string().required("First name is required"),
@@ -56,6 +51,11 @@ function RegistrationStepTwo({ ...props }: RegistrationProps): JSX.Element {
       console.log(values);
     },
   });
+
+  const handleChangeResident = (event) => {
+    setSelectedResident(event.target.value);
+    formik.values.resident = event.target.value;
+  };
 
   return (
     <form className={styles.formReg} onSubmit={formik.handleSubmit}>
@@ -134,8 +134,9 @@ function RegistrationStepTwo({ ...props }: RegistrationProps): JSX.Element {
           </FormControl>
         </div>
         <div className={styles.residentText}>
-          Are you a resident or citizen of the united states or its territories?*
-         </div> 
+          Are you a resident or citizen of the united states or its
+          territories?*
+        </div>
         <div className={styles.radioWrapper}>
           <div className={styles.radio}>
             <Radio

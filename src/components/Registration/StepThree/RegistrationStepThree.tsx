@@ -12,7 +12,9 @@ function RegistrationStepThree({ ...props }: RegistrationProps): JSX.Element {
   const handleStepBack = useCallback(() => {
     props.step(2);
   }, [props.step]);
+  
   const dispatch = useDispatch();
+
   const handleConfirmEmail = () => {
     dispatch(resendConfirmEmail(AuthLocalStorage.getToken()));
   };

@@ -19,11 +19,14 @@ import { RegistrationProps } from "../RegistrationProps.props";
 function RegistrationStepOne({...props}:RegistrationProps): JSX.Element {
   const handleStepNext = useCallback(() => {
     props.step(2);
-},[props.step]);
+  },[props.step]);
+
+  const dispatch = useDispatch();
+  
   const [values, setValues] = useState({
     showPassword: false,
   });
-  const dispatch = useDispatch();
+  
   const validationSchema = yup.object({
     username: yup.string().required("Username is required"),
     email: yup
