@@ -1,0 +1,125 @@
+.formReg {
+    display: grid;
+    place-items: center;
+    width: 400px;
+}
+.formContent {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.title{
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 26px;
+line-height: 30px;
+color: #4B4B4B;
+padding-bottom: 42px;
+}
+.titleName {
+ display: flex;
+flex-direction: row;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+color: #959595;
+margin-left: 8px;
+}
+.privacy {
+    text-decoration: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #3D4CEB;
+}
+    .textPrivacy {
+    width: 400px;
+    height: 42px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    color: #959595;
+    padding-bottom: 42px;
+    margin-left: 10px;
+}
+    .button {
+    width: 400px;
+    height: 43px;
+    margin-left: 10px;
+}
+
+.input {
+    padding-bottom: 10px;
+}
+.skip {
+cursor: pointer;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+color: #3D4CEB;
+padding-top: 13px;
+text-align: center;
+}
+.back {
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+color: #3D4CEB;
+padding-left: 10px;
+}
+.residentText {
+display: flex;
+flex-direction: row;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+color: #4B4B4B;
+margin-left: 8px;
+}
+.yesNo {
+font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+text-transform: uppercase;
+color: #4B4B4B;
+}
+.arrowBack {
+    display: flex;
+    align-items: center;
+    padding-bottom: 42px;
+    cursor: pointer;
+}
+.titleWrapper {
+    width: 270px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 109px;
+}
+.radioWrapper {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+}
+.radio {
+    display: flex;
+    align-items: center;
+    padding-right: 28px;
+}

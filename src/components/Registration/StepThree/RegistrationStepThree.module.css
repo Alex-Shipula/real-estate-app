@@ -1,0 +1,59 @@
+
+.formContent {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.title{
+    width: 209px;
+    height: 30px;
+    white-space: nowrap;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    color: #4B4B4B;
+    padding-bottom:48px;
+    padding-left: 31px;
+}
+    .button {
+    width: 400px;
+    height: 43px;
+    margin-left: 10px;
+}
+.back {
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+color: #3D4CEB;
+padding-left: 15px;
+}
+.residentText {
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+color: #959595;
+padding-left: 12px;
+padding-bottom: 48px;
+}
+.arrowBack {
+    display: flex;
+    align-items: center;
+    padding-bottom: 48px;
+    cursor: pointer;
+}
+.titleWrapper {
+    width: 270px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 15px;
+}
