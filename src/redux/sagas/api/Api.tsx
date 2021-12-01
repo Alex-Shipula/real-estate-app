@@ -22,3 +22,13 @@ export function confirmEmail(token: string) {
     }
   });
 }
+
+export function getPropertiesFilters(token: string, query: string) {
+  return axios({
+    url: `https://propchain-api.herokuapp.com/api/v1/properties/filter?${query}`,
+    method: "GET",
+    headers: {
+       'Authorization': `token ${token}`
+    }
+  });
+}

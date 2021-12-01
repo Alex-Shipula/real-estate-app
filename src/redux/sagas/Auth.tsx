@@ -1,8 +1,10 @@
 import { call, takeLatest } from "redux-saga/effects";
-import { resendConfirmEmail, signUpData } from "../actions/Actions";
-import { confirmEmail,signUp } from "./api/Api";
+import { useDispatch } from "react-redux";
+import { resendConfirmEmail, signUpData,getDataFilters, getDataStore } from "../actions/Actions";
+import { confirmEmail,signUp,getPropertiesFilters } from "./api/Api";
 import AuthLocalStorage from "../../helpers/AuthLocalStorage";
-import { confirmEmailType,signUpDataType } from "../Types";
+import { confirmEmailType,getDataFiltersType,signUpDataType } from "../Types";
+
 
 
 function* SignUpWorker(action: signUpDataType) {
@@ -26,6 +28,18 @@ function* confirmEmailWorker(action: confirmEmailType) {
   }
 }
 
+function* getDataFiltersWorker(action: getDataFiltersType) {
+  const dispatch = useDispatch();
+  try {
+   const{data} = yield call(getPropertiesFilters, action.token, action.query);
+   yield dispatch(getDataStore(data))
+   console.log(data);
+   
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function* watchAuth():Generator {
   yield takeLatest(signUpData, SignUpWorker);
 }
@@ -34,3 +48,6 @@ export function* watchConfirmEmail():Generator {
   yield takeLatest(resendConfirmEmail, confirmEmailWorker);
 }
 
+export function* watchDataFiltersWorker():Generator {
+  yield takeLatest(getDataFilters, getDataFiltersWorker);
+}

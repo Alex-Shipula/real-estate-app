@@ -8,3 +8,12 @@ export const AuthReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const GetDataReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "GET_DATA_STORE":
+      return { ...state, loading: true };
+    default:
+      return state;
+  }
+}
