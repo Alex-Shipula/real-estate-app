@@ -22,7 +22,7 @@ export const Filters = ({ ...props }: FiltersProps): JSX.Element => {
         props.showMarket(false)
     }, [props.showMarket]);
    
-    //console.log( store.getState());
+    console.log( store.getState());
     const [queryParam ,setQueryParam] = useState('');
     const [valueSlider, setValueSlider] = useState([0, 100]);
 

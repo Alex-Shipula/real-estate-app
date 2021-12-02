@@ -1,4 +1,4 @@
-import { call, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { useDispatch } from "react-redux";
 import { resendConfirmEmail, signUpData,getDataFilters, getDataStore } from "../actions/Actions";
 import { confirmEmail,signUp,getPropertiesFilters } from "./api/Api";
@@ -29,10 +29,9 @@ function* confirmEmailWorker(action: confirmEmailType) {
 }
 
 function* getDataFiltersWorker(action: getDataFiltersType) {
-  const dispatch = useDispatch();
   try {
    const{data} = yield call(getPropertiesFilters, action.token, action.query);
-   yield dispatch(getDataStore(data))
+   yield put({type:"GET_DATA_STORE",data})
    console.log(data);
    
   } catch (error) {
