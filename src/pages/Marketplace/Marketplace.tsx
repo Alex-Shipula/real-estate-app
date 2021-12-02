@@ -12,9 +12,7 @@ function Marketplace(): JSX.Element {
 
   const [showFilters, setShowFilters] = useState(false);
   const [queryValues, setQueryValues] = useState();
-  console.log(queryValues);
-  console.log( store.getState());
-  
+
   dispatch(getDataFilters(queryValues));
 
   return (

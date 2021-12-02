@@ -8,6 +8,7 @@ import filtersButton from "../../img/buttons/filters.svg";
 import store from '../../redux/store';
 import { DataTest } from '../../DataTest';
 
+
 interface MarketplacePageProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     showFilters: React.Dispatch<React.SetStateAction<boolean>>,
@@ -20,6 +21,24 @@ export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element
     }, [props.showFilters]);
 
     const [valueSort, setValueSort] = useState("");
+    const cards = store.getState();
+    const cardsArr = [];
+    for (const key in cards.data) {
+        cardsArr.push(
+            <Card
+                id={cards.data[key].id}
+                forSale={true}
+                img={"house_1.png"}
+                totalPrice={cards.data[key].total_tokens || 1000}
+                tokenPrice={cards.data[key].token_price || 0}
+                district={cards.data[key].neighborhood || <div>No district</div>}
+                address={cards.data[key].address || <div>No address</div>}
+                expectedYield={12.03}
+                rentPerToken={6.2}
+                crossRent={80.0}
+            />
+        )
+    }
 
     return (
         <div className={styles.wrapperMarket}>
@@ -40,23 +59,7 @@ export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element
                 </div>
             </div>
             <div className={styles.cards}>
-                {DataTest.rows.map((card, i) => {
-                    <div>
-                        <Card
-                            key={i}
-                            id={card.id}
-                            forSale={true}
-                            img={"house_1.png"}
-                            totalPrice={card.total_tokens}
-                            tokenPrice={card.token_price}
-                            district={card.neighborhood}
-                            address={card.address}
-                            expectedYield={12.03}
-                            rentPerToken={6.2}
-                            crossRent={80.0}
-                        />
-                    </div>
-                })}
+               {cardsArr}
             </div>
             <div className={styles.pagination}>
                 <Pagination count={10} color="primary" />

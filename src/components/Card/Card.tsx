@@ -8,6 +8,7 @@ import forSale from "../../img/forSale.svg";
 
 
 export const Card = ({ ...props }: CardProps): JSX.Element => {
+
   return (
     <Box className={styles.wrapperCard}>
       <Paper elevation={7} className={styles.paper}>
@@ -19,16 +20,16 @@ export const Card = ({ ...props }: CardProps): JSX.Element => {
           <div className={styles.wrapperPrice}>
             <div className={styles.totalPrice}>
               <div className={styles.titlePrice}>Total Price</div>
-              <div className={styles.price}>{457.75} $</div>
+              <div className={styles.price}>{props.totalPrice} $</div>
             </div>
             <div className={styles.tokenPrice}>
               <div className={styles.titlePrice}>Token Price</div>
-              <div className={styles.price}>{54.27} $</div>
+              <div className={styles.price}>{props.tokenPrice} $</div>
             </div>
           </div>
-          <div className={styles.district}>Briercliff Road</div>
+          <div className={styles.district}>{props.district}</div>
           <div className={styles.address}>
-            4476 Briercliff Road, HUBBARD, Oregon, 97032
+            {props.address}
           </div>
           <div className={styles.wrapperBottom}>
             <div className={styles.yield}>

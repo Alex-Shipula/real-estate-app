@@ -11,8 +11,7 @@ function* SignUpWorker(action: signUpDataType) {
   try {
     const {data} = yield call(signUp, action.payload);
     AuthLocalStorage.login(data.token);
-    console.log(AuthLocalStorage.getToken());
-    
+    console.log(AuthLocalStorage.getToken());   
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +21,6 @@ function* confirmEmailWorker(action: confirmEmailType) {
   try {
    const{data} = yield call(confirmEmail, action.token);
    console.log(data);
-   
   } catch (error) {
     console.log(error);
   }
@@ -30,10 +28,8 @@ function* confirmEmailWorker(action: confirmEmailType) {
 
 function* getDataFiltersWorker(action: getDataFiltersType) {
   try {
-   const{data} = yield call(getPropertiesFilters, action.query);
-   yield put(getDataStore(data))
-   console.log(data);
-   
+   const data = yield call(getPropertiesFilters, action.query);
+    yield put (getDataStore(data.data.rows))
   } catch (error) {
     console.log(error);
   }
