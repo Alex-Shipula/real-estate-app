@@ -3,15 +3,19 @@ import { useDispatch } from "react-redux";
 import { Filters } from '../../components/Filters/Filters';
 import { MarketplacePage } from '../../components/MarketplacePage/MarketplacePage';
 import { getDataFilters } from '../../redux/actions/Actions';
+import store from '../../redux/store';
 
-const tokenAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MTM2NDkzLWJjYWQtNDMxMy05OWYzLTI4ZGEwZTVhYTE0MSIsImZpcnN0X25hbWUiOiJKaG9uIiwibGFzdF9uYW1lIjoiRG9lIiwidXNlcm5hbWUiOiJBZG1pbiIsImV0aF9hY2NvdW50IjpudWxsLCJwaG9uZSI6IiszODA5OTk5OTU1NjEiLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiZW1haWxfaXNfdmVyaWZpZWQiOnRydWUsImlzX3VzYV9jaXRpemVuIjpmYWxzZSwicm9sZSI6ImFkbWluIiwiYXZhdGFyX2ZpbGVfaWQiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9zdGFuNzgvaW1hZ2UvdXBsb2FkL3YxNjM3MjE5MTgwL3Byb3BjaGFpbl9hdmF0YXJzL2ZodnpmOGQ3aHY0eGk4Y3hhanVnLnBuZyIsImNyZWF0ZWRBdCI6IjIwMjEtMTEtMDhUMjA6NDQ6MTcuMDk5WiIsInVwZGF0ZWRBdCI6IjIwMjEtMTEtMjRUMDU6Mjk6MzcuOTkzWiIsImlhdCI6MTYzODM4MzE2MiwiZXhwIjoxNjM4NTU1OTYyfQ.RWlcOWi3kBujTxSctuYsLmdGe4ZboSdloM8nuVXWslw";
+const tokenAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2MTM2NDkzLWJjYWQtNDMxMy05OWYzLTI4ZGEwZTVhYTE0MSIsImZpcnN0X25hbWUiOiJKaG9uIiwibGFzdF9uYW1lIjoiRG9lIiwidXNlcm5hbWUiOiJBZG1pbiIsImV0aF9hY2NvdW50IjpudWxsLCJwaG9uZSI6IiszODA5OTk5OTU1NjEiLCJlbWFpbCI6ImFkbWluQG1haWwuY29tIiwiZW1haWxfaXNfdmVyaWZpZWQiOnRydWUsImlzX3VzYV9jaXRpemVuIjpmYWxzZSwicm9sZSI6ImFkbWluIiwiYXZhdGFyX2ZpbGVfaWQiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9zdGFuNzgvaW1hZ2UvdXBsb2FkL3YxNjM3MjE5MTgwL3Byb3BjaGFpbl9hdmF0YXJzL2ZodnpmOGQ3aHY0eGk4Y3hhanVnLnBuZyIsImNyZWF0ZWRBdCI6IjIwMjEtMTEtMDhUMjA6NDQ6MTcuMDk5WiIsInVwZGF0ZWRBdCI6IjIwMjEtMTEtMjRUMDU6Mjk6MzcuOTkzWiIsImlhdCI6MTYzODQzNTM1NCwiZXhwIjoxNjM4NjA4MTU0fQ.oEcbIEjjrVSYwUV8ZZcwYfQQy9PUFYD_2g8ZoaqTWj0";
 
 function Marketplace(): JSX.Element {
   const dispatch = useDispatch();
 
   const [showFilters, setShowFilters] = useState(false);
   const [queryValues, setQueryValues] = useState();
-  dispatch(getDataFilters(tokenAdmin,queryValues));
+  console.log(queryValues);
+  console.log( store.getState());
+  
+  dispatch(getDataFilters(queryValues));
 
   return (
     <div>

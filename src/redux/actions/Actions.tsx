@@ -1,4 +1,4 @@
-import { confirmEmailType,signUpDataType,payload,getDataFiltersType } from "../Types";
+import { confirmEmailType,signUpDataType,payload,getDataFiltersTypeToken,getDataFiltersType } from "../Types";
 
 export function signUpData(payload: payload): signUpDataType {
   return {
@@ -14,14 +14,22 @@ export function resendConfirmEmail(token: string): confirmEmailType {
   };
 }
 
-export function getDataFilters(token: string, query:string): getDataFiltersType {
+export function getDataFiltersToken(token: string, query:string): getDataFiltersTypeToken {
   return {
-    type: "GET_DATA_FILTERS",
+    type: "GET_DATA_FILTERS_TOKEN",
     token,
     query
   };
 }
-export function getDataStore(data:Record<string, unknown>):any {
+
+export function getDataFilters(query:string): getDataFiltersType {
+  return {
+    type: "GET_DATA_FILTERS",
+    query
+  };
+}
+
+export function getDataStore(data:any):any {
   return{
     type: "GET_DATA_STORE",
     data
