@@ -35,16 +35,16 @@ export const Card = ({ ...props }: CardProps): JSX.Element => {
             <div className={styles.yield}>
               <div className={styles.yieldTop}>
                 <img src={arrowUp} className={styles.yieldArrow}></img>
-                <div className={styles.yieldPercent}>{12.03}%</div>
+                <div className={styles.yieldPercent}>{props.expectedYield} %</div>
               </div>
               <div className={styles.yieldText}>Expected Yield</div>
             </div>
             <div className={styles.tokenRent}>
-              <div className={styles.tokenRentPrice}>{6.2} $ / year</div>
+              <div className={styles.tokenRentPrice}>{props.rentPerToken} $ / year</div>
               <div className={styles.tokenRentText}>Rent per Token</div>
             </div>
             <div className={styles.tokenRent}>
-              <div className={styles.tokenRentPrice}>{80.0} $ / year</div>
+              <div className={styles.tokenRentPrice}>{props.crossRent} $ / year</div>
               <div className={styles.tokenRentText}>Cross Rent</div>
             </div>
           </div>
