@@ -1,5 +1,6 @@
 import { Paper } from "@mui/material";
 import { Box } from "@mui/system";
+import { NavLink } from "react-router-dom";
 import styles from "./Card.module.css";
 import { CardProps } from "./Card.props";
 import house_1 from "../../img/housesTest/house_1.png";
@@ -12,7 +13,7 @@ export const Card = ({ ...props }: CardProps): JSX.Element => {
   return (
     <Box className={styles.wrapperCard}>
       <Paper elevation={7} className={styles.paper}>
-        <div className={styles.wrapperContent}>
+        <NavLink className={styles.wrapperContent} to={`/market-single-page/${props.id}`}>
           <div className={styles.wrapperImg}>
             <img src={forSale} className={styles.forSale}></img>
             <img src={house_1} className={styles.img}></img>
@@ -48,7 +49,7 @@ export const Card = ({ ...props }: CardProps): JSX.Element => {
               <div className={styles.tokenRentText}>Cross Rent</div>
             </div>
           </div>
-        </div>
+        </NavLink>
       </Paper>
     </Box>
   );

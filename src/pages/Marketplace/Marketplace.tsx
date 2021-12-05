@@ -25,11 +25,13 @@ function Marketplace(): JSX.Element {
     dispatch(getDataFilters(queryValues));
   }, [queryValues, showFilters]);
 
+  let founded;
   const cards = useMemo(() => store.getState().data, []);
   const cardsArr = [];
 
   if (cards.rows) {
     console.log(cards.rows);
+    founded = cards.rows.length;
     cards.rows.map((val) => {
       cardsArr.push(
         <Card
@@ -48,6 +50,7 @@ function Marketplace(): JSX.Element {
     })
   } else {
     console.log("CARDS TEST");
+    founded = DataTest.rows.length;
     DataTest.rows.map((val) => {
       cardsArr.push(
         <Card
@@ -70,7 +73,7 @@ function Marketplace(): JSX.Element {
     <div>
       {showFilters ?
         <Filters showMarket={setShowFilters} setQueryValues={setQueryValues} />
-        : <MarketplacePage cardsArr={cardsArr} showFiltersValue={showFilters} showFilters={setShowFilters} />
+        : <MarketplacePage founded={founded} cardsArr={cardsArr} showFiltersValue={showFilters} showFilters={setShowFilters} />
       }
     </div>
   );

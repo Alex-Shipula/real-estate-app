@@ -1,0 +1,133 @@
+.wrapperMarket {
+    width: 1440px;
+    height: auto;
+}
+.wrapperContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+}
+.wrapperLeft {
+    display: grid;
+    grid-template-rows: 6fr 2fr 8fr;
+}
+.wrapperRightGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-auto-rows: minmax(75px, auto);
+    grid-template-areas: "inf fin"
+                         "inf fin"
+                         "inf fin"
+                         "inf fin"
+                         "inf fin"
+                         "man man"
+                         "man man"
+                         "prp prp"
+                         "prp prp"
+                         "prp prp"
+                         "prp prp"
+                         "abt abt"
+                         "abt abt"
+                         "abt abt"
+                         "abt abt";
+}
+.wrapperInfo {
+    grid-area: inf;
+}
+.wrapperFinancial {
+    grid-area: fin;
+}
+.wrapperMaintenance {
+    grid-area: man;
+}
+.wrapperProperty {
+    grid-area: prp;
+}
+.wrapperAbout {
+    grid-area: abt;
+}
+.bigImage {
+    width: 620px;
+    height: 450px;
+    border-radius: 15px;
+}
+.wrapperBackInvest {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 27px;
+    padding-bottom: 22px;
+}
+.arrowBack {
+    display: flex;
+    align-items: center;
+    padding-bottom: 42px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.back {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3D4CEB;
+    padding-left: 10px;
+    padding-bottom: 3px;
+}
+.buttonInvest {
+    margin-top: -38px;
+}
+.wrapperTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+.titleRoadForSale {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.titleForSale {
+    padding-left: 16px;
+}
+.titleAddress {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #4B4B4B;
+    padding-top: 6px;
+}
+.titleRoad {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: #4B4B4B;
+}
+.titleTotal {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #4F4F4F;
+}
+.titleSum {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+    color: #333333;
+}
+.titleRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

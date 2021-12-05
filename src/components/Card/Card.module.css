@@ -14,7 +14,7 @@
 .wrapperContent {
     display: grid;
     padding: 12px 12px 16px 12px;
-    
+    text-decoration: none;
 }
 .wrapperPrice {
     display: flex;
