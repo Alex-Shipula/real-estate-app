@@ -1,14 +1,16 @@
 .wrapperMarket {
-    width: 1440px;
+    width: 1280px;
     height: auto;
 }
 .wrapperContent {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
 }
 .wrapperLeft {
     display: grid;
     grid-template-rows: 6fr 2fr 8fr;
+    justify-content: center;
 }
 .wrapperRightGrid {
     display: grid;
@@ -34,6 +36,8 @@
     grid-area: inf;
     display: grid;
     grid-template-rows: repeat(5, 1fr);
+    justify-content: center;
+    padding-right: 13px;
 }
 .wrapperFinancial {
     grid-area: fin;

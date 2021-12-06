@@ -8,8 +8,20 @@ import Avatar from '@mui/material/Avatar';
 import menuUp from "../../src/img/icons/menuUp.svg";
 import menuDown from "../../src/img/icons/menuDown.svg";
 
+interface InfoProps {
+    assetPrice?: number;
+    listingFee?: number;
+    initialMain?: number;
+    initialRenov?: number;
+    propertyManag?: number;
+    realtPlatf?: number;
+    maintenance?: number;
+    propertyTaxes?: number;
+    incurance?: number;
+    utilities?: string;
+}
 
-export const InfoPopup = () => {
+export const InfoPopup = ({ ...props }: InfoProps):JSX.Element => {
 
     const [anchorElPopup, setAnchorElPopup] = useState(null);
     const openPopup = Boolean(anchorElPopup);
@@ -65,9 +77,48 @@ export const InfoPopup = () => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <div className={styles.textPopupMenu}>
-
+                    {props.assetPrice ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Underlying Asset Price</div>
+                        <div className={styles.textPopupMenuValue}>{props.assetPrice} $</div>
+                    </div> : <div></div>}
+                    {props.listingFee ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>RealT Listing Fee (10%)</div>
+                        <div className={styles.textPopupMenuValue}>{props.listingFee} $</div>
+                    </div> : <div></div>}
+                    {props.initialMain ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Initial Maintenance Reserve</div>
+                        <div className={styles.textPopupMenuValue}>{props.initialMain} $</div>
+                    </div> : <div></div>}
+                    {props.initialRenov ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Initial Renovation Reserve</div>
+                        <div className={styles.textPopupMenuValue}>{props.initialRenov} $</div>
+                    </div> : <div></div>}
+                    {props.propertyManag ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Property Management (8.00%)</div>
+                        <div className={styles.textPopupMenuValue}>{props.propertyManag} $</div>
+                    </div> : <div></div>}
+                    {props.realtPlatf ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>RealT Platform (2.00%)</div>
+                        <div className={styles.textPopupMenuValue}>{props.realtPlatf} $</div>
+                    </div> : <div></div>}
+                    {props.maintenance ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Maintenance Expenses</div>
+                        <div className={styles.textPopupMenuValue}>{props.maintenance} $</div>
+                    </div> : <div></div>}
+                    {props.propertyTaxes ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Property Taxes</div>
+                        <div className={styles.textPopupMenuValue}>{props.propertyTaxes} $</div>
+                    </div> : <div></div>}
+                    {props.incurance ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Insurance</div>
+                        <div className={styles.textPopupMenuValue}>{props.incurance} $</div>
+                    </div> : <div></div>}
+                    {props.utilities ? <div className={styles.textPopupMenuWrapper}>
+                        <div className={styles.textPopupMenuTitle}>Utilities</div>
+                        <div className={styles.textPopupMenuValue}>{props.utilities}</div>
+                    </div> : <div></div>}
                 </div>
-            </Menu>
+            </Menu >
         </div>
     )
 }

@@ -1,14 +1,7 @@
-import { useState } from 'react';
+
 import styles from './InfoMarket.module.css';
-import Box from "@mui/material/Box";
-import Menu from "@mui/material/Menu";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import Avatar from '@mui/material/Avatar';
-import iconInfo from '../../img/icons/iconInfo.svg';
-import menuUp from "../../img/icons/menuUp.svg";
-import menuDown from "../../img/icons/menuDown.svg";
 import { InfoPopup } from '../../UI/InfoPopup';
+import { InfoIcon } from '../../UI/InfoIcon/InfoIcon';
 
 interface InfoMarketProps {
     textTop: string;
@@ -16,23 +9,20 @@ interface InfoMarketProps {
     infoIcon: boolean;
     infoPopup: boolean;
     textInfo?: string;
+    assetPrice?: number;
+    listingFee?: number;
+    initialMain?: number;
+    initialRenov?: number;
+    propertyManag?: number;
+    realtPlatf?: number;
+    maintenance?: number;
+    propertyTaxes?: number;
+    incurance?: number;
+    utilities?: string;
 }
 
 export const InfoMarket = ({ ...props }: InfoMarketProps): JSX.Element => {
 
-    const [anchorElIcon, setAnchorElIcon] = useState(null);
-   
-    const openIcon = Boolean(anchorElIcon);
-    
-    const handleClickIcon = (event) => {
-        setAnchorElIcon(event.currentTarget);
-    };
-    const handleCloseIcon = () => {
-        setAnchorElIcon(null);
-    };
-
-
-   
 
     return (
         <div className={styles.wrapperInfo}>
@@ -41,56 +31,20 @@ export const InfoMarket = ({ ...props }: InfoMarketProps): JSX.Element => {
                 <div className={styles.textTop}>{props.textTop}</div>
                 <div className={styles.wrapperBottom}>
                     <div className={styles.textBottom}>{props.textBottom}</div>
-                    {props.infoIcon ? <div className={styles.infoIcon}>
-                        <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
-                            <Tooltip title="Info">
-                                <IconButton onClick={handleClickIcon}>
-                                    <img className={styles.infoIcon} src={iconInfo}></img>
-                                </IconButton>
-                            </Tooltip>
-                        </Box>
-
-                        <Menu
-                            anchorEl={anchorElIcon}
-                            open={openIcon}
-                            onClose={handleCloseIcon}
-                            onClick={handleCloseIcon}
-                            PaperProps={{
-                                elevation: 0,
-                                sx: {
-                                    overflow: "visible",
-                                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                                    mt: 1.5,
-                                    "& .MuiAvatar-root": {
-                                        width: 32,
-                                        height: 32,
-                                        ml: -0.5,
-                                        mr: 1,
-                                    },
-                                    "&:before": {
-                                        content: '""',
-                                        display: "block",
-                                        position: "absolute",
-                                        top: 0,
-                                        right: 10,
-                                        width: 15,
-                                        height: 15,
-                                        bgcolor: "background.paper",
-                                        transform: "translateY(-50%) rotate(45deg)",
-                                        zIndex: 0,
-                                    },
-                                },
-                                style: {
-                                    width: "35ch",
-                                },
-                            }}
-                            transformOrigin={{ horizontal: "right", vertical: "top" }}
-                            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-                        > <div className={styles.textInfo}>{props.textInfo}</div></Menu>
-                    </div> : <div></div>}
+                    {props.infoIcon ? <InfoIcon textInfo={props.textInfo} /> : <div></div>}
                 </div>
             </div>
-            {props.infoPopup ? <InfoPopup /> : <div></div>}
+            {props.infoPopup ? <InfoPopup
+                assetPrice={props.assetPrice}
+                listingFee={props.listingFee}
+                initialMain={props.initialMain}
+                initialRenov={props.initialRenov}
+                propertyManag={props.propertyManag}
+                realtPlatf={props.realtPlatf}
+                maintenance={props.maintenance}
+                propertyTaxes={props.propertyTaxes}
+                incurance={props.incurance}
+                utilities={props.utilities} /> : <div></div>}
         </div>
     )
 }
