@@ -11,7 +11,7 @@ export const AuthReducer = (state = {}, action) => {
 
 export const GetDataReducer = (state = {}, action) => {
   switch (action.type) {
-    case "GET_DATA_STORE":
+    case "GET_DATA_STORE":    
       return { ...state, loading: false, ...action.data };
     default:
       return state;

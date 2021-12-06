@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/semi */
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { HeaderProps } from "./Header.props";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
@@ -11,7 +10,6 @@ import logInButton from "../../img/buttons/loginButton.svg";
 import AccountMenu from "../../UI/AccountMenu/AccountMenu";
 import Notification from "../../UI/Notification/Notification";
 import Language from "../../UI/Language";
-import { getDataFilters } from "../../redux/actions/Actions";
 
 const headStr = {
   logoAg: "AGENCY",
@@ -25,15 +23,10 @@ const headStr = {
 }
 
 export const Header = ({ ...props }: HeaderProps): JSX.Element => {
-  const dispatch = useDispatch();
 
   const [isAuth, setIsAuth] = useState(true);
   const handlerLogIn = () => {
     setIsAuth(true)
-  };
-
-  const handlerMarketplace = () => {
-    dispatch(getDataFilters("page=1&orderby=description&desc=true&"));
   };
 
   return (
@@ -49,7 +42,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
           </div>
         </div>
         <div className={styles.headerNav}>
-          <NavLink className={styles.headerNavEl} onClick={handlerMarketplace} to="/marketplace">
+          <NavLink className={styles.headerNavEl} to="/marketplace">
             {headStr.mark}
           </NavLink>
           <NavLink className={styles.headerNavEl} to="/dashboard">
