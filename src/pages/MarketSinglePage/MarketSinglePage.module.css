@@ -32,6 +32,8 @@
 }
 .wrapperInfo {
     grid-area: inf;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
 }
 .wrapperFinancial {
     grid-area: fin;

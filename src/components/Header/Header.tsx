@@ -31,6 +31,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
   const handlerLogIn = () => {
     setIsAuth(true)
   };
+
   const handlerMarketplace = () => {
     dispatch(getDataFilters("page=1&orderby=description&desc=true&"));
   };

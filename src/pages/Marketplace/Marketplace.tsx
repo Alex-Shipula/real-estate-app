@@ -14,9 +14,9 @@ function Marketplace(): JSX.Element {
   const dispatch = useDispatch();
 
   // This dont working!
-  // useEffect(() => {
-  //   dispatch(getDataFilters("page=1&orderby=description&desc=true&"));
-  // }, [])
+  useEffect(() => {
+    dispatch(getDataFilters("page=1&orderby=description&desc=true&"));
+  }, [])
 
   const [showFilters, setShowFilters] = useState(false);
   const [queryValues, setQueryValues] = useState();
