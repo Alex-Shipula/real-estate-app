@@ -26,7 +26,6 @@ function* confirmEmailWorker(action: confirmEmailType) {
 function* getDataFiltersWorker(action: getDataFiltersType) {
   try {
     const data = yield call(getPropertiesFilters, action.query);
-    console.log(action.query);
     yield put(getDataStore(data.data));
   } catch (error) {
     console.log(error);

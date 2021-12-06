@@ -10,7 +10,8 @@ interface MarketplacePageProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     showFilters: React.Dispatch<React.SetStateAction<boolean>>,
     showFiltersValue: boolean,
-    cardsArr:any[]
+    cardsArr:any[],
+    founded:number
 }
 
 
@@ -34,7 +35,7 @@ export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element
                         <SelectSort setValue={setValueSort} value={valueSort} />
                     </div>
                     <div className={styles.wrapperFound}>
-                        <div className={styles.founded}>123 founded</div>
+                        <div className={styles.founded}>{props.founded} founded</div>
                         <div className={styles.clearFilters}>Clear All Filters</div>
                         <img src={filtersButton} className={styles.filters} onClick={handlerShowFilters}></img>
                     </div>
