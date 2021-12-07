@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/semi */
-import { useState,useCallback } from "react";
+
+import { useState } from "react";
 import { HeaderProps } from "./Header.props";
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
@@ -28,7 +28,7 @@ export const Header = ({ ...props }: HeaderProps): JSX.Element => {
   const handlerLogIn = () => {
     setIsAuth(true)
   };
-
+  
   return (
     <header className={styles.wraperHeader}>
       <div className={styles.header}>

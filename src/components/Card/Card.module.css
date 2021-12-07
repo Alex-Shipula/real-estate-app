@@ -1,0 +1,121 @@
+.wrapperCard {
+    padding-top: 25px;
+}
+.paper {
+    width: 300px;
+    height: 375px;
+    background: #FFFFFF ;
+    border: 1px solid  #E1E1E1;
+    box-sizing: border-box;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    margin: 0 auto;
+}
+.wrapperContent {
+    display: grid;
+    padding: 12px 12px 16px 12px;
+    
+}
+.wrapperPrice {
+    display: flex;
+    justify-content: space-between;
+}
+.titlePrice {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #959595;
+    padding-top: 12px;
+    padding-bottom: 4px; 
+}
+.price {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 25px;
+    line-height: 29px;
+    color: #4B4B4B; 
+}
+.district {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #4B4B4B; 
+    padding-top: 12px;
+    padding-bottom: 4px;   
+}
+.address {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #959595;   
+}
+.wrapperBottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 18px;
+}
+.yieldTop {
+    display: flex;
+}
+.yieldArrow {
+    display: flex;
+    align-items: center;
+}
+.yieldPercent {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #3D4CEB; 
+    padding-left: 10px;  
+}
+.yieldText {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #3D4CEB;
+    padding-top: 3px;
+}
+.tokenRentPrice {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #4B4B4B;
+    margin-right: 6px;  
+}
+.tokenRentText {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 12px;
+    color: #4B4B4B;
+    padding-top: 7px;  
+}
+.img {
+    position: relative;
+    width: 276px;
+    height: 189px;
+    background:#C4C4C4;
+    border-radius: 6px;
+}
+.forSale {
+    padding-top:20px;
+    position: absolute;
+    z-index:100; 
+}

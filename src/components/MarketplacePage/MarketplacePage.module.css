@@ -1,0 +1,79 @@
+.wrapperMarket {
+    width: 1440px;
+    height: auto;
+  }
+  .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 400px);
+  }
+  .wrapperTop {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+  }
+  .title {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 36px;
+      line-height: 42px;
+      color: #4B4B4B;
+      padding-top: 124px;
+      padding-left: 10px;    
+  }
+  .bottomTitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4B4B4B;
+  padding-top: 15px;
+  padding-left: 14px;
+  }
+  .founded {
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 16px;
+      color: #4F4F4F;   
+  }
+  .clearFilters {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  text-decoration-line: underline;
+  color: #3D4CEB;
+  padding-left: 20px;
+  cursor: pointer;
+  }
+  .wrapperSort {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .wrapperFound {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-right: 10px;
+  }
+  .filters {
+      padding-left: 32px;
+      cursor: pointer;
+  }
+  .sortBy {
+      padding-top: 18px;
+      padding-bottom: 36px;
+  }
+  .pagination {
+      display: flex;
+      justify-content: flex-end;
+      padding: 30px 15px 30px 0px;
+  }

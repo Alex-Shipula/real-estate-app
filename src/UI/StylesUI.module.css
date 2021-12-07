@@ -1,0 +1,25 @@
+.selectSort {
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 14px;
+color: #959595;
+}
+.selectForm {
+    width: 300px;
+    height: 32px;
+}
+.selectSortFilters {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 14px;
+    color: #959595;
+    padding: 0px 0px 0px 0px;
+    }
+.selectFormFilters {
+    width: 140px;
+    height: 32px;
+}

@@ -11,3 +11,12 @@ export interface confirmEmailType {
   type: string;
   token: string;
 }
+export interface getDataFiltersTypeToken {
+  type:string;
+  token:string;
+  query:string;
+}
+export interface getDataFiltersType {
+  type:string;
+  query:string;
+}
