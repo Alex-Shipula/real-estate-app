@@ -1,15 +1,10 @@
 import { useCallback } from "react";
-import { DetailedHTMLProps, HTMLAttributes } from "react";
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import styles from "./StylesUI.module.css";
+import { SelectFiltersProps } from "./TypesUI.props";
 
-interface SelectFiltersProps 
-extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    setValue: React.Dispatch<React.SetStateAction<number>>,
-    value:number
-  }
 
 export const SelectFiltersTotalUnits = ({...props}:SelectFiltersProps): JSX.Element => {
     const handleChange = useCallback((event) => {

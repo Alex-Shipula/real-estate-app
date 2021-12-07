@@ -1,5 +1,4 @@
 import { useState, useCallback, useEffect } from 'react';
-import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { Divider, OutlinedInput, Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import FormControl from '@mui/material/FormControl';
@@ -8,13 +7,8 @@ import styles from "./Filters.module.css";
 import applyButton from "../../img/buttons/applyButton.svg";
 import { RangeSliderFilters } from '../../UI/RangeSliderFilter';
 import { SelectFilters,SelectFiltersSquare,SelectFiltersTotalUnits } from '../../UI/SelectFilters';
-// import store from '../../redux/store';
+import { FiltersProps } from './Filters.props';
 
-interface FiltersProps
-    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    showMarket: React.Dispatch<React.SetStateAction<boolean>>,
-    setQueryValues:React.Dispatch<React.SetStateAction<string>>
-}
 
 export const Filters = ({ ...props }: FiltersProps): JSX.Element => {
 
@@ -22,7 +16,6 @@ export const Filters = ({ ...props }: FiltersProps): JSX.Element => {
         props.showMarket(false)
     }, [props.showMarket]);
    
-    // console.log( store.getState());
     const [queryParam ,setQueryParam] = useState('');
     const [valueSlider, setValueSlider] = useState([0, 100]);
 

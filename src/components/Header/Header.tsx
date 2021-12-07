@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/semi */
+
 import { useState } from "react";
 import { HeaderProps } from "./Header.props";
 import { NavLink } from "react-router-dom";

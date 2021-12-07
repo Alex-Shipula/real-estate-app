@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import styles from './Marketplace.module.css';
 import { Filters } from '../../components/Filters/Filters';
@@ -48,3 +48,4 @@ function Marketplace(): JSX.Element {
 }
 
 export default Marketplace;
+

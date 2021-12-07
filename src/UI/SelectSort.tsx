@@ -1,15 +1,10 @@
 import { useCallback } from 'react';
-import { DetailedHTMLProps, HTMLAttributes } from "react";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import styles from "./StylesUI.module.css";
+import { SelectSortProps } from './TypesUI.props';
 
-interface SelectSortProps 
-extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    setValue: React.Dispatch<React.SetStateAction<string>>,
-    value:string
-  }
 
 export const SelectSort = ({ ...props }:SelectSortProps): JSX.Element => {
 
