@@ -1,18 +1,9 @@
 import { useState, useCallback } from 'react';
-import { DetailedHTMLProps, HTMLAttributes } from "react";
 import { SelectSort } from "../../UI/SelectSort";
 import styles from "./MarketplacePage.module.css";
 import Pagination from "@mui/material/Pagination";
 import filtersButton from "../../img/buttons/filters.svg";
-
-
-interface MarketplacePageProps
-    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    showFilters: React.Dispatch<React.SetStateAction<boolean>>,
-    showFiltersValue: boolean,
-    cardsArr:any[],
-    founded:number
-}
+import { MarketplacePageProps } from './MarketplacePage.props';
 
 
 export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element => {
