@@ -1,8 +1,8 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { resendConfirmEmail, signUpData, getDataFilters, getDataStore } from "../actions/Actions";
-import { confirmEmail, signUp, getPropertiesFilters } from "./api/Api";
+import { confirmEmail, signUp, getPropertiesFilters, getPropertiesFiltersToken } from "./api/Api";
 import AuthLocalStorage from "../../helpers/AuthLocalStorage";
-import { confirmEmailType, signUpDataType, getDataFiltersType } from "../Types";
+import { confirmEmailType, signUpDataType, getDataFiltersTypeToken } from "../Types";
 
 function* SignUpWorker(action: signUpDataType) {
   try {
@@ -23,9 +23,9 @@ function* confirmEmailWorker(action: confirmEmailType) {
   }
 }
 
-function* getDataFiltersWorker(action: getDataFiltersType) {
+function* getDataFiltersWorker(action: getDataFiltersTypeToken) {
   try {
-    const data = yield call(getPropertiesFilters, action.query);
+    const data = yield call(getPropertiesFiltersToken,action.token,action.query);
     yield put(getDataStore(data.data));
   } catch (error) {
     console.log(error);

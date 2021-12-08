@@ -32,7 +32,7 @@ export const Filters = ({ ...props }: FiltersProps): JSX.Element => {
     const [SquareFeetTo, setSquareFeetTo] = useState(0);
 
     useEffect(() => {
-        setQueryParam(`page=1&orderby=description&desc=true&${(BedroomsFrom === 0) ? "" : `bedroom_from=${BedroomsFrom}`}${(BedroomsTo === 0) ? "" : `&bedroom_to=${BedroomsTo}`}${(BathsFrom === 0) ? "" : `&bath_from=${BathsFrom}`}${(BathsTo === 0) ? "" : `&bath_to=${BathsTo}`}${(TotalUnitsFrom === 0) ? "" : `&units_from=${TotalUnitsFrom}`}${(TotalUnitsTo === 0) ? "" : `&units_to=${TotalUnitsTo}`}${(SquareFeetFrom === 0) ? "" : `&square_from=${SquareFeetFrom}`}${(SquareFeetTo === 0) ? "" : `&square_to=${SquareFeetTo}`}`)
+        setQueryParam(`page_size=8&page=1&orderby=description&desc=true${(BedroomsFrom === 0) ? "" : `&bedroom_from=${BedroomsFrom}`}${(BedroomsTo === 0) ? "" : `&bedroom_to=${BedroomsTo}`}${(BathsFrom === 0) ? "" : `&bath_from=${BathsFrom}`}${(BathsTo === 0) ? "" : `&bath_to=${BathsTo}`}${(TotalUnitsFrom === 0) ? "" : `&units_from=${TotalUnitsFrom}`}${(TotalUnitsTo === 0) ? "" : `&units_to=${TotalUnitsTo}`}${(SquareFeetFrom === 0) ? "" : `&square_from=${SquareFeetFrom}`}${(SquareFeetTo === 0) ? "" : `&square_to=${SquareFeetTo}`}`)
     },[BedroomsFrom,BedroomsTo,BathsFrom,BathsTo,TotalUnitsFrom,TotalUnitsTo,SquareFeetFrom,SquareFeetTo]);
 
     const handlerQueryValues = () => {

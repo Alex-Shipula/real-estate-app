@@ -29,6 +29,11 @@
         justify-content: space-between;
         align-items: center;
 }
+.wrapperInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
     .contentWrap {
     display: flex;
     flex-direction: row;

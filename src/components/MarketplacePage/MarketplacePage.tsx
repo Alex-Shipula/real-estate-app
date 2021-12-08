@@ -4,8 +4,9 @@ import { SelectSort } from "../../UI/SelectSort";
 import styles from "./MarketplacePage.module.css";
 import Pagination from "@mui/material/Pagination";
 import filtersButton from "../../img/buttons/filters.svg";
-import { getDataFilters } from '../../redux/actions/Actions';
+import { getDataFilters, getDataFiltersToken } from '../../redux/actions/Actions';
 import { MarketplacePageProps } from './MarketplacePage.props';
+import { Token } from '../../Token';
 
 
 export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element => {
@@ -18,7 +19,7 @@ export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element
     const [valueSort, setValueSort] = useState("");
 
     const handlerClearAll = () => {
-        dispatch(getDataFilters("page=1&orderby=description&desc=true&"));
+        dispatch(getDataFiltersToken(Token,"page_size=8&page=1&orderby=description&desc=true"));
     }
 
     return (

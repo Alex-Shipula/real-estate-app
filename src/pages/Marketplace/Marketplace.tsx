@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from './Marketplace.module.css';
 import { Filters } from '../../components/Filters/Filters';
 import { MarketplacePage } from '../../components/MarketplacePage/MarketplacePage';
-import { getDataFilters } from '../../redux/actions/Actions';
+import { getDataFilters, getDataFiltersToken } from '../../redux/actions/Actions';
 import { Card } from "../../components/Card/Card";
 import { isEmpty } from 'lodash';
+import { Token } from '../../Token';
 
 
 function Marketplace(): JSX.Element {
@@ -13,12 +14,13 @@ function Marketplace(): JSX.Element {
   const dispatch = useDispatch();
   const data = useSelector((state: any) => state.data.rows);
 
-  const [showFilters, setShowFilters] = useState(false);
-  const [queryValues, setQueryValues] = useState("page=1&orderby=description&desc=true&");
 
+  const [showFilters, setShowFilters] = useState(false);
+  const [queryValues, setQueryValues] = useState("page_size=8&page=1&orderby=description&desc=true");
+ 
   useEffect(() => {
-    dispatch(getDataFilters(queryValues));
-  }, [queryValues,showFilters]);
+    dispatch(getDataFiltersToken(Token,queryValues));
+  }, [queryValues, showFilters]);
 
   let dataMap = [];
 

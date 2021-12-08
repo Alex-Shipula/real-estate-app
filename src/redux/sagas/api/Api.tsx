@@ -28,7 +28,7 @@ export function getPropertiesFiltersToken(token: string, query: string) {
     url: `https://propchain-api.herokuapp.com/api/v1/properties/filter?${query}`,
     method: "GET",
     headers: {
-       'Authorization': `token ${token}`
+       'Authorization': `Bearer ${token}`
     }
   });
 }
