@@ -1,0 +1,23 @@
+.wrapperInvested {
+display: flex;
+align-items: center;
+justify-content: center;
+width: 620px;
+height: 56px;
+background: rgba(19, 96, 0, 0.2);
+border: 1px solid #219653;
+box-sizing: border-box;
+box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.15);
+border-radius: 10px;
+margin-left: 15px;
+margin-bottom: 15px;
+}
+.textInvested {
+display: flex;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+color: #4B4B4B;
+}

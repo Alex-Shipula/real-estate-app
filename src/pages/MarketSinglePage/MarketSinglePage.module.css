@@ -83,8 +83,9 @@
     padding-left: 10px;
     padding-bottom: 3px;
 }
-.buttonInvest {
-    margin-top: -38px;
+
+.buttonAddMeta {
+    cursor: pointer;
 }
 .wrapperLittleImages {
     display: grid;
@@ -172,4 +173,18 @@ font-size: 18px;
 line-height: 21px;
 padding-top: 24px;
 color: #959595;
+}
+.wrapperAddMeta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.textAddMeta {
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+padding-right: 11px;
+color: #4F4F4F;
 }

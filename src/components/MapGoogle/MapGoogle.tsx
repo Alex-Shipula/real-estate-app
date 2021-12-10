@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback,memo } from 'react';
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { MapGoogleProps } from './MapGoogle.props';
 
@@ -7,7 +7,7 @@ const containerStyle = {
     height: '600px'
 };
 
- export const MapGoogle = ({...props}:MapGoogleProps): JSX.Element  => {
+const MapGoogle = ({...props}:MapGoogleProps): JSX.Element  => {
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
         googleMapsApiKey: ""
@@ -29,7 +29,7 @@ const containerStyle = {
         <GoogleMap
             mapContainerStyle={containerStyle}
             center={props.center}
-            zoom={props.center.zoom}
+            zoom={props.zoom}
             onLoad={onLoad}
             onUnmount={onUnmount}
         >
@@ -37,3 +37,4 @@ const containerStyle = {
         </GoogleMap>
     ) : <></>
 };
+export default memo(MapGoogle);

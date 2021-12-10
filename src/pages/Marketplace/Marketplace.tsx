@@ -17,9 +17,9 @@ function Marketplace(): JSX.Element {
 
   const [showFilters, setShowFilters] = useState(false);
   const [queryValues, setQueryValues] = useState("page_size=8&page=1&orderby=description&desc=true");
- 
+
   useEffect(() => {
-    dispatch(getDataFiltersToken(Token,queryValues));
+    dispatch(getDataFiltersToken(Token, queryValues));
   }, [queryValues, showFilters]);
 
   let dataMap = [];
@@ -37,7 +37,18 @@ function Marketplace(): JSX.Element {
       rentPerToken={6.2}
       crossRent={80.0}
     />
-  )) : <div>Loading...</div>;
+  )) : dataMap.push(<Card
+    id="038807a1-6a7f-4bcc-bcde-87b87987a8fe"
+    forSale={true}
+    img="house_1.png"
+    totalPrice={50000}
+    tokenPrice={1000}
+    district='Briercliff Road'
+    address='4476 Briercliff Road, HUBBARD, Oregon, 97032'
+    expectedYield={12.03}
+    rentPerToken={6.2}
+    crossRent={80.0}
+  />)
 
   return (
     <div className={styles.wrapperMarket}>

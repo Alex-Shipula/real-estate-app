@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './MarketSinglePage.module.css';
-import buttonInvest from "../../img/buttons/buttonInvestNow.svg";
 import forSaleImg from "../../img/forSaleIcon.svg";
 import { InfoMarket } from '../../components/InfoMarket/InfoMarket';
 import { Financial } from '../../components/Financial/Financial';
@@ -10,26 +9,65 @@ import { PropertyHighlights } from '../../components/PropertyHighlights/PropertH
 import houseTest from "../../img/housesTest/house_1.png";
 import houseTestSvg from "../../img/housesTest/house_3.svg";
 import arrowBack from "../../../src/img/icons/arrow.jpg";
-import { MapGoogle } from "../../components/MapGoogle/MapGoogle";
+import buttonAddMeta from "../../img/buttons/addMetamask.svg";
+import MapGoogle from "../../components/MapGoogle/MapGoogle";
+import { PopupInvest } from '../../UI/PopupInvest/PopupInvest';
+import { HaveAlreadyInvested } from '../../UI/HaveAlreadyInvested/HaveAlreadyInvested';
 
 
+
+function isMetaMaskInstalled(): boolean {
+	return Boolean(window.ethereum.isMetaMask)
+}
+function openMetamask() {
+	window.open('https://metamask.io/', "_self");
+}
 
 
 function MarketSinglePage(): JSX.Element {
 
-	const [centerMap, setCenterMap] = useState({
-		lat: 48.89686,
-		lng: 35.00900,
-		zoom: 15
-	});
+	const [account, setAccount] = useState(null);
+	const [metamaskIsTrue, setMetamaskIsTrue] = useState(false);
+	const [amountInvest, setAmountInvest] = useState(300);
+    const [transactionHash, setTransactionHash] = useState(1);
+
+	
+	useEffect(() => {
+		setMetamaskIsTrue(isMetaMaskInstalled());
+	}, [metamaskIsTrue]);
 
 	useEffect(() => {
+		if (metamaskIsTrue) {
+			setAccount(window.ethereum.selectedAddress)
+		}
+	}, [account, metamaskIsTrue]);
+	
+	if (metamaskIsTrue) {
+		window.ethereum.on("accountsChanged", () => { setAccount(window.ethereum.selectedAddress) })
+	}
+
+	const handlerAddMetamask = () => {
+		if (metamaskIsTrue) {
+			window.ethereum.request({ method: 'eth_requestAccounts' });
+		} else {
+			openMetamask();
+		}
+	}
+
+	const [centerMap, setCenterMap] = useState({
+		lat: 48.89686,
+		lng: 36.00900,
+	});
+
+	const [zoom, setZoom] = useState(15);
+	const handlerZoom = () => {
+		setZoom(16);
 		setCenterMap({
 			lat: 47.896354,
-			lng: 35.009001,
-			zoom: 15
+			lng: 38.009001,
 		})
-	}, [centerMap]);
+	};
+
 
 	return (
 		<div className={styles.wrapperMarket}>
@@ -40,7 +78,11 @@ function MarketSinglePage(): JSX.Element {
 					</div>
 					<div className={styles.back}>Back</div>
 				</NavLink>
-				<img className={styles.buttonInvest} src={buttonInvest}></img>
+				{account ? <PopupInvest setAmountInvest={setAmountInvest} setTransactionHash={setTransactionHash} neighborhood="No road" address="No address"/> :
+					<div className={styles.wrapperAddMeta}>
+						<div className={styles.textAddMeta}>To start invest You have to</div>
+						<img className={styles.buttonAddMeta} src={buttonAddMeta} onClick={handlerAddMetamask}></img>
+					</div>}
 			</div>
 			<div className={styles.wrapperTitle}>
 				<div className={styles.titleLeft}>
@@ -57,18 +99,20 @@ function MarketSinglePage(): JSX.Element {
 			</div>
 			<div className={styles.wrapperContent}>
 				<div className={styles.wrapperLeft}>
-					<img className={styles.bigImage} src={houseTestSvg}></img>
+					<img className={styles.bigImage} src={houseTest}></img>
 					<div className={styles.wrapperLittleImages}>
 						<img className={styles.littleImage} src={houseTest}></img>
 						<img className={styles.littleImage} src={houseTest}></img>
-						<img className={styles.littleImage} src={houseTestSvg}></img>
+						<img className={styles.littleImage} src={houseTest}></img>
 					</div>
-					<div className={styles.wrapperMap}>
-						<MapGoogle center={centerMap} />
+					<div className={styles.wrapperMap} onClick={handlerZoom}>
+						<MapGoogle center={centerMap} zoom={zoom} />
 					</div>
 				</div>
 				<div className={styles.wrapperRight}>
-					<div className={styles.wrapperHaveAlready}>HAVE ALREADY</div>
+					{ transactionHash ? <div className={styles.wrapperHaveAlready}>
+						<HaveAlreadyInvested  amountInvest={amountInvest}/>
+					</div> : <div></div> }
 					<div className={styles.wrapperRightGrid}>
 						<div className={styles.wrapperInfo}>
 							<InfoMarket textTop={"13.20%"} textBottom={"Expected Yield After Renovation & Stabilization"} infoIcon={false} infoPopup={false} />
