@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from './Marketplace.module.css';
 import { Filters } from '../../components/Filters/Filters';
 import { MarketplacePage } from '../../components/MarketplacePage/MarketplacePage';
-import { getDataFilters, getDataFiltersToken } from '../../redux/actions/Actions';
+import { getDataFiltersToken } from '../../redux/actions/Actions';
 import { Card } from "../../components/Card/Card";
 import { isEmpty } from 'lodash';
 import { Token } from '../../Token';
@@ -28,9 +28,9 @@ function Marketplace(): JSX.Element {
     <Card
       id={val.id}
       forSale={true}
-      img={"house_1.png"}
-      totalPrice={val.total_tokens || 1000}
-      tokenPrice={val.token_price || 0}
+      img={!isEmpty(val.files) ? val.files[0].url : null}
+      totalPrice={val.total_price || "No info"}
+      tokenPrice={val.token_price || "No info"}
       district={val.neighborhood || 'No district'}
       address={val.address || 'No address'}
       expectedYield={12.03}
@@ -38,13 +38,13 @@ function Marketplace(): JSX.Element {
       crossRent={80.0}
     />
   )) : dataMap.push(<Card
-    id="038807a1-6a7f-4bcc-bcde-87b87987a8fe"
+    id={"TEST"}
     forSale={true}
-    img="house_1.png"
+    img={null}
     totalPrice={50000}
     tokenPrice={1000}
-    district='Briercliff Road'
-    address='4476 Briercliff Road, HUBBARD, Oregon, 97032'
+    district={'Briercliff Road'}
+    address={'4476 Briercliff Road, HUBBARD, Oregon, 97032'}
     expectedYield={12.03}
     rentPerToken={6.2}
     crossRent={80.0}

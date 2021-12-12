@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import styles from './MarketSinglePage.module.css';
 import forSaleImg from "../../img/forSaleIcon.svg";
@@ -6,13 +7,13 @@ import { InfoMarket } from '../../components/InfoMarket/InfoMarket';
 import { Financial } from '../../components/Financial/Financial';
 import { Maintenance } from '../../UI/Maintenance/Maintenance';
 import { PropertyHighlights } from '../../components/PropertyHighlights/PropertHighlights';
-import houseTest from "../../img/housesTest/house_1.png";
-import houseTestSvg from "../../img/housesTest/house_3.svg";
+import notImage from "../../img/housesTest/noImage.png";
 import arrowBack from "../../../src/img/icons/arrow.jpg";
 import buttonAddMeta from "../../img/buttons/addMetamask.svg";
 import MapGoogle from "../../components/MapGoogle/MapGoogle";
 import { PopupInvest } from '../../UI/PopupInvest/PopupInvest';
 import { HaveAlreadyInvested } from '../../UI/HaveAlreadyInvested/HaveAlreadyInvested';
+import { isEmpty } from 'lodash';
 
 
 
@@ -22,16 +23,22 @@ function isMetaMaskInstalled(): boolean {
 function openMetamask() {
 	window.open('https://metamask.io/', "_self");
 }
+function GetPropertiesIdFromURL() {
+	const url = window.location.href;
+	const propertiesId = url.substr(url.lastIndexOf("/") + 1, (url.length - url.lastIndexOf("/") - 1))
+	return propertiesId;
+}
 
 
 function MarketSinglePage(): JSX.Element {
 
+	const dataId = useSelector((state: any) => state.dataPropertiesId);
+
 	const [account, setAccount] = useState(null);
 	const [metamaskIsTrue, setMetamaskIsTrue] = useState(false);
 	const [amountInvest, setAmountInvest] = useState(300);
-    const [transactionHash, setTransactionHash] = useState(1);
+	const [transactionHash, setTransactionHash] = useState(1);
 
-	
 	useEffect(() => {
 		setMetamaskIsTrue(isMetaMaskInstalled());
 	}, [metamaskIsTrue]);
@@ -41,7 +48,7 @@ function MarketSinglePage(): JSX.Element {
 			setAccount(window.ethereum.selectedAddress)
 		}
 	}, [account, metamaskIsTrue]);
-	
+
 	if (metamaskIsTrue) {
 		window.ethereum.on("accountsChanged", () => { setAccount(window.ethereum.selectedAddress) })
 	}
@@ -61,10 +68,10 @@ function MarketSinglePage(): JSX.Element {
 
 	const [zoom, setZoom] = useState(15);
 	const handlerZoom = () => {
-		setZoom(16);
-		setCenterMap({
-			lat: 47.896354,
-			lng: 38.009001,
+		setZoom(17);
+		setCenterMap(dataId.coordinates ? dataId.coordinates : {
+			lat: 48.89686,
+			lng: 36.00900,
 		})
 	};
 
@@ -78,7 +85,7 @@ function MarketSinglePage(): JSX.Element {
 					</div>
 					<div className={styles.back}>Back</div>
 				</NavLink>
-				{account ? <PopupInvest setAmountInvest={setAmountInvest} setTransactionHash={setTransactionHash} neighborhood="No road" address="No address"/> :
+				{account ? <PopupInvest setAmountInvest={setAmountInvest} setTransactionHash={setTransactionHash} neighborhood={dataId.neighborhood ? dataId.neighborhood : "No road"} address={dataId.address ? dataId.address : "No address"} /> :
 					<div className={styles.wrapperAddMeta}>
 						<div className={styles.textAddMeta}>To start invest You have to</div>
 						<img className={styles.buttonAddMeta} src={buttonAddMeta} onClick={handlerAddMetamask}></img>
@@ -87,32 +94,32 @@ function MarketSinglePage(): JSX.Element {
 			<div className={styles.wrapperTitle}>
 				<div className={styles.titleLeft}>
 					<div className={styles.titleRoadForSale}>
-						<div className={styles.titleRoad}>Briercliff Road</div>
+						<div className={styles.titleRoad}>{dataId.neighborhood ? dataId.neighborhood : "No road"}</div>
 						<img src={forSaleImg} className={styles.titleForSale}></img>
 					</div>
-					<div className={styles.titleAddress}>4476 Briercliff Road, HUBBARD, Oregon, 97032</div>
+					<div className={styles.titleAddress}>{dataId.address ? dataId.address : "No address"}</div>
 				</div>
 				<div className={styles.titleRight}>
 					<div className={styles.titleTotal}>Total Investment</div>
-					<div className={styles.titleSum}>$513,900.00</div>
+					<div className={styles.titleSum}>$ {dataId.total_price ? dataId.total_price : "No info"}</div>
 				</div>
 			</div>
 			<div className={styles.wrapperContent}>
 				<div className={styles.wrapperLeft}>
-					<img className={styles.bigImage} src={houseTest}></img>
+					<img className={styles.bigImage} src={!isEmpty(dataId.files) ? dataId.files[0].url : notImage}></img>
 					<div className={styles.wrapperLittleImages}>
-						<img className={styles.littleImage} src={houseTest}></img>
-						<img className={styles.littleImage} src={houseTest}></img>
-						<img className={styles.littleImage} src={houseTest}></img>
+						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files[0].url : notImage}></img>
+						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length === 2 ? dataId.files[1].url : notImage : notImage}></img>
+						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length === 3 ? dataId.files[2].url : notImage : notImage}></img>
 					</div>
 					<div className={styles.wrapperMap} onClick={handlerZoom}>
 						<MapGoogle center={centerMap} zoom={zoom} />
 					</div>
 				</div>
 				<div className={styles.wrapperRight}>
-					{ transactionHash ? <div className={styles.wrapperHaveAlready}>
-						<HaveAlreadyInvested  amountInvest={amountInvest}/>
-					</div> : <div></div> }
+					{transactionHash ? <div className={styles.wrapperHaveAlready}>
+						<HaveAlreadyInvested amountInvest={amountInvest} />
+					</div> : <div></div>}
 					<div className={styles.wrapperRightGrid}>
 						<div className={styles.wrapperInfo}>
 							<InfoMarket textTop={"13.20%"} textBottom={"Expected Yield After Renovation & Stabilization"} infoIcon={false} infoPopup={false} />
@@ -120,7 +127,7 @@ function MarketSinglePage(): JSX.Element {
 							<InfoMarket textTop={"6.20 $ / year"} textBottom={"Rent per Token"} textInfo={"Ever needed to move? RealT tenants are no different. Sometimes, life happens. RealT manages all maintenance and tenancy responsibilities, so you dont have to. The cost of property maintenance is paid via the rental income of the property."} infoIcon={true} infoPopup={false} />
 							<InfoMarket textTop={"-2,330.00 $"} textBottom={"Monthly Costs"} infoIcon={false} infoPopup={true} assetPrice={382500.01} listingFee={51388.89} initialMain={15000.00}
 								initialRenov={65000.00} />
-							<InfoMarket textTop={"513,900.00 $"} textBottom={"Total Investment"} textInfo={"Total Investment is currently calculated as Number of tokens x Token price. As a result of the two-decimal value of the Token Price^ Total Investment will typically exhibit a discrepancy of a few cents to a few dollars."} infoIcon={true} infoPopup={true}
+							<InfoMarket textTop={dataId.total_price ? `${dataId.total_price} $` : "No info"} textBottom={"Total Investment"} textInfo={"Total Investment is currently calculated as Number of tokens x Token price. As a result of the two-decimal value of the Token Price^ Total Investment will typically exhibit a discrepancy of a few cents to a few dollars."} infoIcon={true} infoPopup={true}
 								propertyManag={600.00}
 								realtPlatf={150.00}
 								maintenance={600.00}
@@ -129,13 +136,13 @@ function MarketSinglePage(): JSX.Element {
 								utilities={"Tenant-paid"} />
 						</div>
 						<div className={styles.wrapperFinancial}>
-							<Financial rentYear={90000.01} rentMonth={7500.01} netYear={62040.01} netMonth={5170.01} tokenPrice={51.39} totalTokens={10000} startDate={"2021-09-01"} endDate={"2021-08-25"} />
+							<Financial rentYear={90000.01} rentMonth={7500.01} netYear={62040.01} netMonth={5170.01} tokenPrice={dataId.token_price ? dataId.token_price : "No info"} totalTokens={dataId.total_tokens ? dataId.total_tokens : "No info"} startDate={dataId.start_date ? dataId.start_date.substr(0, 10) : "No info"} endDate={dataId.end_date ? dataId.end_date.substr(0, 10) : "No info"} />
 						</div>
 						<div className={styles.wrapperMaintenance}>
 							<Maintenance />
 						</div>
 						<div className={styles.wrapperProperty}>
-							<PropertyHighlights titleProperty={"Multi Family"} constrYear={1947} neighborhood={"Ottawa"} squareFeet={14448} lotSize={6022} totalUnits={12} bedroom={"6x2, 6x3"} bath={"12x1"} rented={"Fully Rented"} section8={"No"} />
+							<PropertyHighlights titleProperty={dataId.type ? dataId.type : "No info"} constrYear={dataId.construction_year ? dataId.construction_year : "No info"} neighborhood={dataId.neighborhood ? dataId.neighborhood : "No road"} squareFeet={dataId.square_feet ? dataId.square_feet : "No info"} lotSize={dataId.lot_size ? dataId.lot_size : "No info"} totalUnits={dataId.total_units ? dataId.total_units : "No info"} bedroom={dataId.bedroom ? dataId.bedroom : "No info"} bath={dataId.bath ? dataId.bath : "No info"} rented={dataId.rented ? "Fully Rented" : "No info"} section8={"No"} />
 						</div>
 						<div className={styles.wrapperAbout}>
 							<div className={styles.titleAbout}>About the Property</div>

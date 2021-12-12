@@ -1,22 +1,30 @@
+import { useDispatch } from "react-redux";
 import { Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import { NavLink } from "react-router-dom";
 import styles from "./Card.module.css";
 import { CardProps } from "./Card.props";
-import house_1 from "../../img/housesTest/house_1.png";
+import notImage from "../../img/housesTest/noImage.png";
 import arrowUp from "../../img/icons/arrowUpMarket.svg";
 import forSale from "../../img/forSale.svg";
+import { getPropertiesId } from "../../redux/actions/Actions";
+import { Token } from "../../Token";
 
 
 export const Card = ({ ...props }: CardProps): JSX.Element => {
 
+  const dispatch = useDispatch();
+  const handlerGetPropertiesId = () => {
+    dispatch(getPropertiesId(Token,props.id))
+  }
+  
   return (
     <Box className={styles.wrapperCard}>
       <Paper elevation={7} className={styles.paper}>
-        <NavLink className={styles.wrapperContent} to={`/market-single-page/${props.id}`}>
+        <NavLink className={styles.wrapperContent} onClick={handlerGetPropertiesId} to={`/market-single-page/${props.id}`}>
           <div className={styles.wrapperImg}>
             <img src={forSale} className={styles.forSale}></img>
-            <img src={house_1} className={styles.img}></img>
+            <img src={props.img || notImage} className={styles.img}></img>
           </div>
           <div className={styles.wrapperPrice}>
             <div className={styles.totalPrice}>

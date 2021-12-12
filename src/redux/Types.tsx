@@ -20,3 +20,8 @@ export interface getDataFiltersType {
   type:string;
   query:string;
 }
+export interface getPropertiesIdType {
+  token:string;
+  type:string;
+  id:string;
+}
