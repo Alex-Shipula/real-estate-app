@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from "./StylesUI.module.css";
+import { makeStyles } from '@mui/styles';
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
@@ -7,21 +8,40 @@ import Tooltip from "@mui/material/Tooltip";
 import Avatar from '@mui/material/Avatar';
 import menuUp from "../../src/img/icons/menuUp.svg";
 import menuDown from "../../src/img/icons/menuDown.svg";
+import { InfoProps } from './TypesUI.props';
 
-interface InfoProps {
-    assetPrice?: number;
-    listingFee?: number;
-    initialMain?: number;
-    initialRenov?: number;
-    propertyManag?: number;
-    realtPlatf?: number;
-    maintenance?: number;
-    propertyTaxes?: number;
-    incurance?: number;
-    utilities?: string;
-}
+const useStyles = makeStyles({
+    root: {
+        elevation: 0,
+        sx: {
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            mt: 1.5,
+            '& .MuiAvatar-root': {
+                width: 32,
+                height: 32,
+                ml: -0.5,
+                mr: 1,
+            },
+            '&:before': {
+                content: '""',
+                display: 'block',
+                position: 'absolute',
+                top: 0,
+                right: 14,
+                width: 10,
+                height: 10,
+                bgcolor: 'background.paper',
+                transform: 'translateY(-50%) rotate(45deg)',
+                zIndex: 0,
+            },
+        },
+    },
 
-export const InfoPopup = ({ ...props }: InfoProps):JSX.Element => {
+});
+
+export const InfoPopup = ({ ...props }: InfoProps): JSX.Element => {
+
+    const classes = useStyles();
 
     const [anchorElPopup, setAnchorElPopup] = useState(null);
     const openPopup = Boolean(anchorElPopup);
@@ -44,35 +64,11 @@ export const InfoPopup = ({ ...props }: InfoProps):JSX.Element => {
                 </Tooltip>
             </Box>
             <Menu
+                className={classes.root}
                 anchorEl={anchorElPopup}
                 open={openPopup}
                 onClose={handleClosePopup}
                 onClick={handleClosePopup}
-                PaperProps={{
-                    elevation: 0,
-                    sx: {
-                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
-                        '& .MuiAvatar-root': {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                        },
-                        '&:before': {
-                            content: '""',
-                            display: 'block',
-                            position: 'absolute',
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: 'background.paper',
-                            transform: 'translateY(-50%) rotate(45deg)',
-                            zIndex: 0,
-                        },
-                    },
-                }}
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >

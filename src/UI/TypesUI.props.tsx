@@ -15,3 +15,18 @@ export interface SelectSortProps
     setValue: React.Dispatch<React.SetStateAction<string>>,
     value: string
 }
+export interface InfoProps {
+    assetPrice?: number;
+    listingFee?: number;
+    initialMain?: number;
+    initialRenov?: number;
+    propertyManag?: number;
+    realtPlatf?: number;
+    maintenance?: number;
+    propertyTaxes?: number;
+    incurance?: number;
+    utilities?: string;
+}
+export interface InfoIconProps {
+    textInfo: string;
+}

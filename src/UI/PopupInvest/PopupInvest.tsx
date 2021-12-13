@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from './PopupInvest.module.css';
+import Web3 from 'web3';
 import { Box } from "@mui/system";
 import CloseIcon from '@mui/icons-material/Close';
 import Popper from '@mui/material/Popper';
@@ -12,7 +13,6 @@ import cancelButton from '../../img/buttons/cancelButton.svg';
 import continueButton from '../../img/buttons/continueButton.svg';
 
 
-const Web3 = require('web3');
 const TEST_PURSE = "0x522E733dED01C4fE514420Fdfc1da6f69C2D896D";
 
 
@@ -22,23 +22,22 @@ function isMetaMaskInstalled(): boolean {
 
 async function tokenPurchasePurse(valueEth) {
     if (isMetaMaskInstalled() === true) {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const web3 = new Web3(Web3.givenProvider);
-        const gas = await web3.eth.estimateGas({ to: TEST_PURSE });
-        const result = await web3.eth.sendTransaction(
-            {
-                gas,
-                to: TEST_PURSE,
-                from: accounts[0],
-                value: valueEth
-            },
-            (error) => {
-                if (error) {
-                    return console.error(error);
+        try {
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const web3 = new Web3(Web3.givenProvider);
+            const gas = await web3.eth.estimateGas({ to: TEST_PURSE });
+            const result = await web3.eth.sendTransaction(
+                {
+                    gas,
+                    to: TEST_PURSE,
+                    from: accounts[0],
+                    value: valueEth
                 }
-            }
-        );
-        return result;
+            );
+            return result;
+        } catch {
+            console.error('Error token purchase operation');
+        }
     }
 }
 
@@ -70,8 +69,12 @@ export const PopupInvest = ({ ...props }): JSX.Element => {
 
     const handlerTokenPurchase = () => {
         if (Number(priceWEI) > 0) {
-            tokenPurchasePurse(priceWEI).then(res => { props.setTransactionHash(res.transactionHash) });
-            props.setAmountInvest(amount.value)
+            try {
+                tokenPurchasePurse(priceWEI).then(res => { props.setTransactionHash(res.transactionHash) });
+                props.setAmountInvest(amount.value);
+            } catch {
+                console.error('Error Token Purchase');
+            }
         }
     };
 
