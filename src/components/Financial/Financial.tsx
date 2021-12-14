@@ -2,17 +2,9 @@
 import styles from './Financial.module.css';
 import { Paper } from "@mui/material";
 import { Box } from "@mui/system";
+import { FinancialProps } from './Financial.props';
 
-interface FinancialProps {
-    rentYear: number;
-    rentMonth: number;
-    netYear: number;
-    netMonth: number;
-    tokenPrice: number;
-    totalTokens: number;
-    startDate: string;
-    endDate: string;
-}
+
 export const Financial = ({ ...props }: FinancialProps): JSX.Element => {
 
     return (

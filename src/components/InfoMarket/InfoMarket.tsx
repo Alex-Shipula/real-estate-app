@@ -2,27 +2,11 @@
 import styles from './InfoMarket.module.css';
 import { InfoPopup } from '../../UI/InfoPopup';
 import { InfoIcon } from '../../UI/InfoIcon/InfoIcon';
+import { InfoMarketProps } from './InfoMarket.props';
 
-interface InfoMarketProps {
-    textTop: string;
-    textBottom: string;
-    infoIcon: boolean;
-    infoPopup: boolean;
-    textInfo?: string;
-    assetPrice?: number;
-    listingFee?: number;
-    initialMain?: number;
-    initialRenov?: number;
-    propertyManag?: number;
-    realtPlatf?: number;
-    maintenance?: number;
-    propertyTaxes?: number;
-    incurance?: number;
-    utilities?: string;
-}
+
 
 export const InfoMarket = ({ ...props }: InfoMarketProps): JSX.Element => {
-
 
     return (
         <div className={styles.wrapperInfo}>

@@ -4,7 +4,7 @@ import { Box } from "@mui/system";
 import { NavLink } from "react-router-dom";
 import styles from "./Card.module.css";
 import { CardProps } from "./Card.props";
-import notImage from "../../img/housesTest/noImage.png";
+import notImage from "../../img/noImage.png";
 import arrowUp from "../../img/icons/arrowUpMarket.svg";
 import forSale from "../../img/forSale.svg";
 import { getPropertiesId } from "../../redux/actions/Actions";

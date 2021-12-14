@@ -1,4 +1,4 @@
-import {useCallback,useState} from 'react';
+import { useCallback, useState } from 'react';
 import { AccountMenuProps } from './AccountMenu.props';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -13,18 +13,44 @@ import logOut from "../../img/icons/logOut.svg";
 import menuUp from "../../img/icons/menuUp.svg";
 import menuDown from "../../img/icons/menuDown.svg";
 
- const menu = {
-   myacc:"My account",
-   idver:"ID Verification",
-   logout:"Log Out"
- };
+const paperProps = {
+  elevation: 0,
+  sx: {
+    overflow: 'visible',
+    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+    mt: 1.5,
+    '& .MuiAvatar-root': {
+      width: 32,
+      height: 32,
+      ml: -0.5,
+      mr: 1,
+    },
+    '&:before': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      right: 14,
+      width: 10,
+      height: 10,
+      bgcolor: 'background.paper',
+      transform: 'translateY(-50%) rotate(45deg)',
+      zIndex: 0,
+    },
+  },
+};
+const menu = {
+  myacc: "My account",
+  idver: "ID Verification",
+  logout: "Log Out"
+};
 
-export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
-  const [anchorEl, setAnchorEl] = useState(null); 
+export default function AccountMenu({ ...props }: AccountMenuProps): JSX.Element {
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleLogOut = useCallback(() => {
-      props.logOut(false);
-  },[props.logOut]);
+    props.logOut(false);
+  }, [props.logOut]);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -36,8 +62,8 @@ export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Account settings">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-      { open ? <Avatar sx={{ width: 20, height: 20 }}><img src={menuUp}></img></Avatar> :
-            <Avatar sx={{ width: 20, height: 20 }}><img src={menuDown}></img></Avatar>}
+            {open ? <Avatar sx={{ width: 20, height: 20 }}><img src={menuUp}></img></Avatar> :
+              <Avatar sx={{ width: 20, height: 20 }}><img src={menuDown}></img></Avatar>}
           </IconButton>
         </Tooltip>
       </Box>
@@ -46,50 +72,25 @@ export default function AccountMenu({...props}:AccountMenuProps):JSX.Element {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
-            '& .MuiAvatar-root': {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            '&:before': {
-              content: '""',
-              display: 'block',
-              position: 'absolute',
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
-              zIndex: 0,
-            },
-          },
-        }}
+        PaperProps={paperProps}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-       <MenuItem>
+        <MenuItem>
           <ListItemIcon>
-          <img src={myAccount}></img>
+            <img src={myAccount}></img>
           </ListItemIcon>
           {menu.myacc}
         </MenuItem>
         <MenuItem>
           <ListItemIcon>
-          <img src={menuVerification}></img>
+            <img src={menuVerification}></img>
           </ListItemIcon>
           {menu.idver}
         </MenuItem>
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
-          <img src={logOut}></img>
+            <img src={logOut}></img>
           </ListItemIcon>
           {menu.logout}
         </MenuItem>

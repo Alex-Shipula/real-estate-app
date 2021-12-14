@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from './InfoIcon.module.css';
-import { makeStyles } from '@mui/styles';
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
@@ -9,41 +8,37 @@ import iconInfo from '../../img/icons/infoIcon.svg';
 import { InfoIconProps } from '../TypesUI.props';
 
 
-const useStyles = makeStyles({
-    root: {
-        elevation: 0,
-        sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            mt: 1.5,
-            "& .MuiAvatar-root": {
-                width: 32,
-                height: 32,
-                ml: -0.5,
-                mr: 1,
-            },
-            "&:before": {
-                content: '""',
-                display: "block",
-                position: "absolute",
-                top: 0,
-                right: 10,
-                width: 15,
-                height: 15,
-                bgcolor: "background.paper",
-                transform: "translateY(-50%) rotate(45deg)",
-                zIndex: 0,
-            },
+const paperProps = {
+    elevation: 0,
+    sx: {
+        overflow: "visible",
+        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+        mt: 1.5,
+        "& .MuiAvatar-root": {
+            width: 32,
+            height: 32,
+            ml: -0.5,
+            mr: 1,
         },
-        style: {
-            width: "35ch",
+        "&:before": {
+            content: '""',
+            display: "block",
+            position: "absolute",
+            top: 0,
+            right: 10,
+            width: 15,
+            height: 15,
+            bgcolor: "background.paper",
+            transform: "translateY(-50%) rotate(45deg)",
+            zIndex: 0,
         },
     },
-});
+    style: {
+        width: "35ch",
+    },
+};
 
 export const InfoIcon = (props: InfoIconProps): JSX.Element => {
-
-    const classes = useStyles();
 
     const [anchorElIcon, setAnchorElIcon] = useState(null);
     const openIcon = Boolean(anchorElIcon);
@@ -66,7 +61,7 @@ export const InfoIcon = (props: InfoIconProps): JSX.Element => {
             </Box>
 
             <Menu
-                className={classes.root}
+                PaperProps={paperProps}
                 anchorEl={anchorElIcon}
                 open={openIcon}
                 onClose={handleCloseIcon}

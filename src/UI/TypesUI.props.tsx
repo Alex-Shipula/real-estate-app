@@ -30,3 +30,6 @@ export interface InfoProps {
 export interface InfoIconProps {
     textInfo: string;
 }
+export interface BellBadgeProps {
+    call: number
+}

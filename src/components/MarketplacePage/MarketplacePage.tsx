@@ -4,7 +4,7 @@ import { SelectSort } from "../../UI/SelectSort";
 import styles from "./MarketplacePage.module.css";
 import Pagination from "@mui/material/Pagination";
 import filtersButton from "../../img/buttons/filters.svg";
-import { getDataFilters, getDataFiltersToken } from '../../redux/actions/Actions';
+import { getDataFiltersToken } from '../../redux/actions/Actions';
 import { MarketplacePageProps } from './MarketplacePage.props';
 import { Token } from '../../Token';
 
