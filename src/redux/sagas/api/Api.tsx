@@ -28,7 +28,7 @@ export function getPropertiesFiltersToken(token: string, query: string) {
     url: `https://propchain-api.herokuapp.com/api/v1/properties/filter?${query}`,
     method: "GET",
     headers: {
-       'Authorization': `token ${token}`
+       'Authorization': `Bearer ${token}`
     }
   });
 }
@@ -39,6 +39,16 @@ export function getPropertiesFilters(query: string) {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
+    }
+  });
+}
+
+export function getPropertiesDetailsId(token: string, id: string) {
+  return axios({
+    url: `https://propchain-api.herokuapp.com/api/v1/properties/details/${id}`,
+    method: "GET",
+    headers: {
+      'Authorization': `Bearer ${token}`
     }
   });
 }

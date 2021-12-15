@@ -1,0 +1,83 @@
+    .wrapperPropertyHighlights {
+        padding-top: 48px;
+}
+    .paper {
+    width: 639px;
+    height: 301px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: -8px; 
+    background: #FFFFFF;
+    border: 1px solid #E1E1E1;
+    box-sizing: border-box;
+    border-radius: 10px;    
+}
+    .wrapperContent {
+    width: 607px;
+    height: 270px;
+    padding: 16px 16px 16px 16px;
+}
+    .wrapperProperty{
+     display: grid;
+     grid-template-columns: 1fr 44px 1fr;
+     padding-top: 25px;
+}
+    .wrapperTitle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+}
+.wrapperInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+    .contentWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 23px;
+}
+    .title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+    color: #4B4B4B;
+}
+    .titleRight {
+   font-family: Roboto;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 16px;
+   line-height: 19px;
+   text-align: right;
+   color: #4B4B4B;
+}
+    .contentTitle {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #524e4e;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+    .contentValue {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+    color: #333131;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}

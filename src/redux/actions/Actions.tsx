@@ -1,4 +1,4 @@
-import { confirmEmailType,signUpDataType,payload,getDataFiltersTypeToken,getDataFiltersType } from "../Types";
+import { confirmEmailType,signUpDataType,payload,getDataFiltersTypeToken,getDataFiltersType,getPropertiesIdType } from "../Types";
 
 export function signUpData(payload: payload): signUpDataType {
   return {
@@ -34,4 +34,19 @@ export function getDataStore(data:any):any {
     type: "GET_DATA_STORE",
     data
   }
+}
+
+export function getPropertiesId(token: string, id:string): getPropertiesIdType {
+  return {
+    type: "GET_PROPERTY_ID",
+    token,
+    id
+  };
+}
+
+export function getDataPropertiesId(data:any): any {
+  return {
+    type: "GET_DATA_PROPERTIES_ID",
+    data
+  };
 }

@@ -1,0 +1,190 @@
+.wrapperMarket {
+    width: 1280px;
+    height: auto;
+    padding-bottom: 80px;
+}
+.wrapperContent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+}
+.wrapperLeft {
+    display: grid;
+    grid-template-rows: 450px 150px 620px;
+    justify-content: flex-start;
+}
+.wrapperRightGrid {
+    display: grid;
+    justify-content: flex-end;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-auto-rows: minmax(75px, auto);
+    grid-template-areas: "inf fin"
+                         "inf fin"
+                         "inf fin"
+                         "inf fin"
+                         "inf fin"
+                         "man man"
+                         "man man"
+                         "prp prp"
+                         "prp prp"
+                         "prp prp"
+                         "prp prp"
+                         "abt abt"
+                         "abt abt"
+                         "abt abt"
+                         "abt abt";
+}
+.wrapperInfo {
+    grid-area: inf;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: center;
+    padding-right: 13px;
+}
+.wrapperFinancial {
+    grid-area: fin;
+}
+.wrapperMaintenance {
+    grid-area: man;
+}
+.wrapperProperty {
+    grid-area: prp;
+}
+.wrapperAbout {
+    grid-area: abt;
+}
+.bigImage {
+    width: 620px;
+    height: 450px;
+    border-radius: 15px;
+}
+.wrapperBackInvest {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 27px;
+    padding-bottom: 22px;
+}
+.arrowBack {
+    display: flex;
+    align-items: center;
+    padding-bottom: 42px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.back {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3D4CEB;
+    padding-left: 10px;
+    padding-bottom: 3px;
+}
+
+.buttonAddMeta {
+    cursor: pointer;
+}
+.wrapperLittleImages {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    padding-top: 25px;
+}
+.littleImage {
+    width: 200px;
+    height: 140px;
+    border-radius:10px;
+}
+.wrapperMap {
+    padding-top: 35px;
+}
+.wrapperTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+.titleRoadForSale {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.titleForSale {
+    padding-left: 16px;
+}
+.titleAddress {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #4B4B4B;
+    padding-top: 6px;
+}
+.titleRoad {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: #4B4B4B;
+}
+.titleTotal {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #4F4F4F;
+}
+.titleSum {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+    color: #333333;
+}
+.titleRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.wrapperAbout {
+    padding-top: 48px;
+}
+.titleAbout {
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 42px;
+color: #4B4B4B;
+}
+.textAbout {
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 21px;
+padding-top: 24px;
+color: #959595;
+}
+.wrapperAddMeta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.textAddMeta {
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+padding-right: 11px;
+color: #4F4F4F;
+}

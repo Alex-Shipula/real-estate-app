@@ -11,6 +11,7 @@ import Wallet from "./pages/Wallet/Wallet";
 import LogIn from "./pages/LogIn/LogIn";
 import Register from "./pages/Register/Register";
 import { Layout } from "./components/Layout/Layout";
+import MarketSinglePage from "./pages/MarketSinglePage/MarketSinglePage";
 
 function App(): JSX.Element {
   return (
@@ -18,6 +19,7 @@ function App(): JSX.Element {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/marketplace" component={Marketplace} />
+        <Route path="/market-single-page/:slotid" component={MarketSinglePage} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/wallet" component={Wallet} />
         <Route exact path="/mytokens" component={MyTokens} />

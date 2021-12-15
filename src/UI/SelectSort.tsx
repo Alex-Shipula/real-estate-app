@@ -23,7 +23,7 @@ export const SelectSort = ({ ...props }:SelectSortProps): JSX.Element => {
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
           >
-            {(props.value.length > 0) ? "" : <MenuItem value="" ><em className={styles.selectSort}>Sort by</em></MenuItem>}
+            {(props.value.length > 0) ? "" : <MenuItem value="" ><div className={styles.selectSort}>Sort by</div></MenuItem>}
             <MenuItem value="popul"><div className={styles.selectSort}>Popularity</div></MenuItem>
             <MenuItem value="latest" ><div className={styles.selectSort}>Latest</div></MenuItem>
             <MenuItem value="lowPrice" ><div className={styles.selectSort}>Price: lowt to hight</div></MenuItem>

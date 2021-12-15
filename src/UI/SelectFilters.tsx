@@ -21,7 +21,7 @@ export const SelectFiltersTotalUnits = ({...props}:SelectFiltersProps): JSX.Elem
                         displayEmpty
                         inputProps={{ 'aria-label': 'Without label' }}
                     >
-                        {(props.value > 0) ? "" : <MenuItem value="" ><em className={styles.selectSortFilters}>0</em></MenuItem>}
+                        {(props.value > 0) ? "" : <MenuItem value="" ><div className={styles.selectSortFilters}>0</div></MenuItem>}
                         <MenuItem value={1} ><div className={styles.selectSortFilters}>1</div></MenuItem>
                         <MenuItem value={5} ><div className={styles.selectSortFilters}>5</div></MenuItem>
                         <MenuItem value={10} ><div className={styles.selectSortFilters}>10</div></MenuItem>
@@ -50,7 +50,7 @@ export const SelectFiltersSquare = ({...props}:SelectFiltersProps): JSX.Element 
                         displayEmpty
                         inputProps={{ 'aria-label': 'Without label' }}
                     >
-                        {(props.value > 0) ? "" : <MenuItem value="" ><em className={styles.selectSortFilters}>0</em></MenuItem>}
+                        {(props.value > 0) ? "" : <MenuItem value="" ><div className={styles.selectSortFilters}>0</div></MenuItem>}
                         <MenuItem value={10} ><div className={styles.selectSortFilters}>10</div></MenuItem>
                         <MenuItem value={30} ><div className={styles.selectSortFilters}>30</div></MenuItem>
                         <MenuItem value={50} ><div className={styles.selectSortFilters}>50</div></MenuItem>
@@ -83,7 +83,7 @@ export const SelectFilters = ({...props}:SelectFiltersProps): JSX.Element => {
                         displayEmpty
                         inputProps={{ 'aria-label': 'Without label' }}
                     >
-                        {(props.value > 0) ? "" : <MenuItem value="" ><em className={styles.selectSortFilters}>0</em></MenuItem>}
+                        {(props.value > 0) ? "" : <MenuItem value="" ><div className={styles.selectSortFilters}>0</div></MenuItem>}
                         <MenuItem value={1} ><div className={styles.selectSortFilters}>1</div></MenuItem>
                         <MenuItem value={2} ><div className={styles.selectSortFilters}>2</div></MenuItem>
                         <MenuItem value={3} ><div className={styles.selectSortFilters}>3</div></MenuItem>

@@ -1,8 +1,8 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { resendConfirmEmail, signUpData, getDataFilters, getDataStore } from "../actions/Actions";
-import { confirmEmail, signUp, getPropertiesFilters } from "./api/Api";
+import { resendConfirmEmail, signUpData, getDataFilters, getDataStore,getDataPropertiesId,getPropertiesId } from "../actions/Actions";
+import { confirmEmail, signUp, getPropertiesFilters, getPropertiesFiltersToken,getPropertiesDetailsId } from "./api/Api";
 import AuthLocalStorage from "../../helpers/AuthLocalStorage";
-import { confirmEmailType, signUpDataType, getDataFiltersType } from "../Types";
+import { confirmEmailType, signUpDataType, getDataFiltersTypeToken,getPropertiesIdType } from "../Types";
 
 function* SignUpWorker(action: signUpDataType) {
   try {
@@ -23,10 +23,19 @@ function* confirmEmailWorker(action: confirmEmailType) {
   }
 }
 
-function* getDataFiltersWorker(action: getDataFiltersType) {
+function* getDataFiltersWorker(action: getDataFiltersTypeToken) {
   try {
-    const data = yield call(getPropertiesFilters, action.query);
+    const data = yield call(getPropertiesFiltersToken,action.token,action.query);
     yield put(getDataStore(data.data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* getDataPropertiesIdWorker(action: getPropertiesIdType) {
+  try {
+    const dataId = yield call(getPropertiesDetailsId,action.token,action.id);
+    yield put(getDataPropertiesId(dataId.data));
   } catch (error) {
     console.log(error);
   }
@@ -42,4 +51,7 @@ export function* watchConfirmEmail(): Generator {
 
 export function* watchDataFilters(): Generator {
   yield takeLatest(getDataFilters, getDataFiltersWorker);
+}
+export function* watchDataPropertiesId(): Generator {
+  yield takeLatest(getPropertiesId, getDataPropertiesIdWorker);
 }

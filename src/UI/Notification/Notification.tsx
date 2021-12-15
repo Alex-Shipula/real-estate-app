@@ -1,4 +1,4 @@
-import {useState,useMemo} from "react";
+import { useState, useMemo } from "react";
 import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,15 +8,45 @@ import Tooltip from "@mui/material/Tooltip";
 import { NotificationProps } from "./Notification.props";
 import BellBadge from "../BellBadge";
 
+const paperProps = {
+  elevation: 0,
+  sx: {
+    overflow: "visible",
+    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+    mt: 1.5,
+    "& .MuiAvatar-root": {
+      width: 32,
+      height: 32,
+      ml: -0.5,
+      mr: 1,
+    },
+    "&:before": {
+      content: '""',
+      display: "block",
+      position: "absolute",
+      top: 0,
+      right: 14,
+      width: 10,
+      height: 10,
+      bgcolor: "background.paper",
+      transform: "translateY(-50%) rotate(45deg)",
+      zIndex: 0,
+    },
+  },
+  style: {
+    width: "40ch",
+  },
+};
+
 const date = new Date();
 const payments = {
-  not:"Notification",
+  not: "Notification",
   userread: "all as read",
   resiv: "You received a new payment"
 };
 
-export default function Notification({...props}: NotificationProps): JSX.Element {
-  const options = useMemo(() => ["New Payment","New Payment","New Payment","New Payment","New Payment","New Payment","New Payment"],[]);
+export default function Notification({ ...props }: NotificationProps): JSX.Element {
+  const options = useMemo(() => ["New Payment", "New Payment", "New Payment", "New Payment", "New Payment", "New Payment", "New Payment"], []);
   const [userName, setUserName] = useState("Mark");
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -41,35 +71,7 @@ export default function Notification({...props}: NotificationProps): JSX.Element
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            mt: 1.5,
-            "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            "&:before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: "background.paper",
-              transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
-            },
-          },
-          style: {
-            width: "40ch",
-          },
-        }}
+        PaperProps={paperProps}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
