@@ -11,9 +11,8 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import investNow from '../../img/buttons/buttonInvestNow.svg';
 import cancelButton from '../../img/buttons/cancelButton.svg';
 import continueButton from '../../img/buttons/continueButton.svg';
-
-
-const TEST_PURSE = "0x522E733dED01C4fE514420Fdfc1da6f69C2D896D";
+import { MixerTestContract } from '../../Metamask/Contract';
+import { mixer_abi } from '../../Metamask/Abi';
 
 
 function isMetaMaskInstalled(): boolean {
@@ -25,15 +24,8 @@ async function tokenPurchasePurse(valueEth) {
         try {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const web3 = new Web3(Web3.givenProvider);
-            const gas = await web3.eth.estimateGas({ to: TEST_PURSE });
-            const result = await web3.eth.sendTransaction(
-                {
-                    gas,
-                    to: TEST_PURSE,
-                    from: accounts[0],
-                    value: valueEth
-                }
-            );
+            const contract = new web3.eth.Contract(mixer_abi, MixerTestContract, { gas: 500000 });
+            const result = await contract.methods.buyDogCoins().send({ from: accounts[0], value: valueEth });
             return result;
         } catch {
             console.error('Error token purchase operation');
@@ -41,13 +33,12 @@ async function tokenPurchasePurse(valueEth) {
     }
 }
 
-
 export const PopupInvest = ({ ...props }): JSX.Element => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [open, setOpen] = useState(false);
     const [placement, setPlacement] = useState();
     const [amount, setAmount] = useState({ value: '' });
-
+   
     const handleChangeAmount = (prop) => (event) => {
         setAmount({ ...amount, [prop]: event.target.value });
     };
@@ -64,16 +55,16 @@ export const PopupInvest = ({ ...props }): JSX.Element => {
         setOpen(false)
     };
 
-    const dollarCourse = 0.00023;
-    const priceWEI = String(Number(amount.value) * dollarCourse * 1000000000000000000);
+    const dollarCourse = 0.000031;
+    const priceWEI = String(Math.round(Number(amount.value) * dollarCourse * 1000000000000000000));
 
     const handlerTokenPurchase = () => {
         if (Number(priceWEI) > 0) {
             try {
-                tokenPurchasePurse(priceWEI).then(res => { props.setTransactionHash(res.transactionHash) });
-                props.setAmountInvest(amount.value);
+                tokenPurchasePurse(priceWEI).then(res => {props.setResultTransaction(res.status)});
+                setOpen(false);
             } catch {
-                console.error('Error Token Purchase');
+                console.error('Error token purchase');
             }
         }
     };

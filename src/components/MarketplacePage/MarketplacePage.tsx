@@ -1,26 +1,30 @@
-import { useState, useCallback } from 'react';
-import { useDispatch } from "react-redux";
+import { useState, useCallback, SetStateAction } from 'react';
+import { useSelector } from "react-redux";
 import { SelectSort } from "../../UI/SelectSort";
 import styles from "./MarketplacePage.module.css";
 import Pagination from "@mui/material/Pagination";
 import filtersButton from "../../img/buttons/filters.svg";
-import { getDataFiltersToken } from '../../redux/actions/Actions';
 import { MarketplacePageProps } from './MarketplacePage.props';
-import { Token } from '../../Token';
 
 
 export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element => {
 
-    const dispatch = useDispatch();
+    const count = Math.ceil(useSelector((state: any) => state.data.count) / 8);
+
     const handlerShowFilters = useCallback(() => {
         props.showFilters(true)
     }, [props.showFilters]);
 
-    const [valueSort, setValueSort] = useState("");
+    const handlerClearAll = useCallback(() => {
+        props.clearAll()
+    }, [props.clearAll]);
 
-    const handlerClearAll = () => {
-        dispatch(getDataFiltersToken(Token,"page_size=8&page=1&orderby=description&desc=true"));
-    }
+    const [page, setPage] = useState(1);
+
+    const handleChangePagination = (event: any, value: SetStateAction<number>) => {
+        setPage(value);
+        props.setPage(value);
+    };
 
     return (
         <div className={styles.wrapperMarket}>
@@ -31,7 +35,7 @@ export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element
                 </div>
                 <div className={styles.wrapperSort}>
                     <div className={styles.sortBy}>
-                        <SelectSort setValue={setValueSort} value={valueSort} />
+                        <SelectSort setValue={props.setSort} />
                     </div>
                     <div className={styles.wrapperFound}>
                         <div className={styles.founded}>{props.founded} founded</div>
@@ -44,7 +48,7 @@ export const MarketplacePage = ({ ...props }: MarketplacePageProps): JSX.Element
                 {props.cardsArr}
             </div>
             <div className={styles.pagination}>
-                <Pagination count={10} color="primary" />
+                <Pagination count={count} page={page} onChange={handleChangePagination} color="primary" />
             </div>
         </div >
     );
