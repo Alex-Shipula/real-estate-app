@@ -35,7 +35,7 @@ function Marketplace(): JSX.Element {
   const [squareFeetTo, setSquareFeetTo] = useState(0);
 
   useEffect(() => {
-    setQueryValues(`page_size=8&page=${page}${sort}${(bedroomsFrom === 0) ? "" : `&bedroom_from=${bedroomsFrom}`}${(bedroomsTo === 0) ? "" : `&bedroom_to=${bedroomsTo}`}${(bathsFrom === 0) ? "" : `&bath_from=${bathsFrom}`}${(bathsTo === 0) ? "" : `&bath_to=${bathsTo}`}${(totalUnitsFrom === 0) ? "" : `&units_from=${totalUnitsFrom}`}${(totalUnitsTo === 0) ? "" : `&units_to=${totalUnitsTo}`}${(squareFeetFrom === 0) ? "" : `&square_from=${squareFeetFrom}`}${(squareFeetTo === 0) ? "" : `&square_to=${squareFeetTo}`}&total_price_from=${valueSlider[0] * 10000}&total_price_to=${valueSlider[1] * 100000}`)
+    setQueryValues(`page_size=8&page=${page}${sort}${(bedroomsFrom === 0) ? "" : `&bedroom_from=${bedroomsFrom}`}${(bedroomsTo === 0) ? "" : `&bedroom_to=${bedroomsTo}`}${(bathsFrom === 0) ? "" : `&bath_from=${bathsFrom}`}${(bathsTo === 0) ? "" : `&bath_to=${bathsTo}`}${(totalUnitsFrom === 0) ? "" : `&units_from=${totalUnitsFrom}`}${(totalUnitsTo === 0) ? "" : `&units_to=${totalUnitsTo}`}${(squareFeetFrom === 0) ? "" : `&square_from=${squareFeetFrom}`}${(squareFeetTo === 0) ? "" : `&square_to=${squareFeetTo}`}&total_price_from=${valueSlider[0] * 1000}&total_price_to=${valueSlider[1] * 10000}`)
   }, [bedroomsFrom, bedroomsTo, bathsFrom, bathsTo, totalUnitsFrom, totalUnitsTo, squareFeetFrom, squareFeetTo, page, sort, valueSlider]);
 
   useEffect(() => {

@@ -86,7 +86,7 @@ function MarketSinglePage(): JSX.Element {
 		lat: 48.89686,
 		lng: 36.00900,
 	});
-
+ 
 	const [zoom, setZoom] = useState(15);
 	const handlerZoom = () => {
 		setZoom(17);
@@ -130,8 +130,8 @@ function MarketSinglePage(): JSX.Element {
 					<img className={styles.bigImage} src={!isEmpty(dataId.files) ? dataId.files[0].url : notImage}></img>
 					<div className={styles.wrapperLittleImages}>
 						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files[0].url : notImage}></img>
-						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length === 2 ? dataId.files[1].url : notImage : notImage}></img>
-						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length === 3 ? dataId.files[2].url : notImage : notImage}></img>
+						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length > 1 ? dataId.files[1].url : notImage : notImage}></img>
+						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length > 2 ? dataId.files[2].url : notImage : notImage}></img>
 					</div>
 					<div className={styles.wrapperMap} onClick={handlerZoom}>
 						<MapGoogle center={centerMap} zoom={zoom} />

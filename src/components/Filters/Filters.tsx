@@ -38,7 +38,7 @@ export const Filters = ({ ...props }: FiltersProps): JSX.Element => {
                             <div className={styles.blockTopLeft}>
                                 <FormControl sx={{ m: 1, width: "17ch" }} variant="outlined">
                                     <OutlinedInput
-                                        value={`$${props.valueSlider[0] * 10000}`}
+                                        value={`$${props.valueSlider[0] * 1000}`}
                                     /> </FormControl>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ export const Filters = ({ ...props }: FiltersProps): JSX.Element => {
                             <div className={styles.blockTopRight}>
                                 <FormControl sx={{ m: 1, width: "17ch" }} variant="outlined">
                                     <OutlinedInput
-                                        value={`$${props.valueSlider[1] * 100000}`}
+                                        value={`$${props.valueSlider[1] * 10000}`}
                                     /> </FormControl>
                             </div>
                         </div>

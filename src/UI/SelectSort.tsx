@@ -1,4 +1,4 @@
-import { useCallback,useState } from 'react';
+import { useCallback, useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -27,8 +27,8 @@ export const SelectSort = ({ ...props }: SelectSortProps): JSX.Element => {
             inputProps={{ 'aria-label': 'Without label' }}
           >
             {(value.length > 0) ? "" : <MenuItem value=""><div className={styles.selectSort}>Sort by</div></MenuItem>}
-            <MenuItem value="&orderby=units&desc=true"><div className={styles.selectSort}>Popularity</div></MenuItem>
-            <MenuItem value="&orderby=units"><div className={styles.selectSort}>Latest</div></MenuItem>
+            <MenuItem value="&orderby=total_units&desc=true"><div className={styles.selectSort}>Popularity</div></MenuItem>
+            <MenuItem value="&orderby=total_units"><div className={styles.selectSort}>Latest</div></MenuItem>
             <MenuItem value="&orderby=total_price"><div className={styles.selectSort}>Price: lowt to hight</div></MenuItem>
             <MenuItem value="&orderby=total_price&desc=true"><div className={styles.selectSort}>Price: hight to lowt</div></MenuItem>
           </Select>
