@@ -14,7 +14,9 @@ import MapGoogle from "../../components/MapGoogle/MapGoogle";
 import { PopupInvest } from '../../UI/PopupInvest/PopupInvest';
 import { HaveAlreadyInvested } from '../../UI/HaveAlreadyInvested/HaveAlreadyInvested';
 import { isEmpty } from 'lodash';
-
+import { token_abi } from '../../Metamask/Abi';
+import Web3 from 'web3';
+import { RinkebyTestContract } from '../../Metamask/Contract';
 
 
 function isMetaMaskInstalled(): boolean {
@@ -29,6 +31,19 @@ function GetPropertiesIdFromURL() {
 	return propertiesId;
 }
 
+async function tokenBalanceOff() {
+	if (isMetaMaskInstalled() === true) {
+		try {
+			const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+			const web3 = new Web3(Web3.givenProvider);
+			const contract = new web3.eth.Contract(token_abi, RinkebyTestContract, { from: accounts[0] });
+			const result = await contract.methods.balanceOf(accounts[0]).call();
+			return (result / 10 ** 10).toFixed(2);
+		} catch {
+			console.log("Error token balance");
+		}
+	}
+}
 
 function MarketSinglePage(): JSX.Element {
 
@@ -36,8 +51,14 @@ function MarketSinglePage(): JSX.Element {
 
 	const [account, setAccount] = useState(null);
 	const [metamaskIsTrue, setMetamaskIsTrue] = useState(false);
-	const [amountInvest, setAmountInvest] = useState(300);
-	const [transactionHash, setTransactionHash] = useState(1);
+	const [amountInvest, setAmountInvest] = useState(undefined);
+	const [resultTransaction, setResultTransaction] = useState(false);
+
+	useEffect(() => {
+		if (metamaskIsTrue) {
+			tokenBalanceOff().then(res => { setAmountInvest(res) });
+		}
+	}, [account,resultTransaction]);
 
 	useEffect(() => {
 		setMetamaskIsTrue(isMetaMaskInstalled());
@@ -65,7 +86,7 @@ function MarketSinglePage(): JSX.Element {
 		lat: 48.89686,
 		lng: 36.00900,
 	});
-
+ 
 	const [zoom, setZoom] = useState(15);
 	const handlerZoom = () => {
 		setZoom(17);
@@ -85,7 +106,7 @@ function MarketSinglePage(): JSX.Element {
 					</div>
 					<div className={styles.back}>Back</div>
 				</NavLink>
-				{account ? <PopupInvest setAmountInvest={setAmountInvest} setTransactionHash={setTransactionHash} neighborhood={dataId.neighborhood ? dataId.neighborhood : "No road"} address={dataId.address ? dataId.address : "No address"} /> :
+				{account ? <PopupInvest setResultTransaction={setResultTransaction} neighborhood={dataId.neighborhood ? dataId.neighborhood : "No road"} address={dataId.address ? dataId.address : "No address"} /> :
 					<div className={styles.wrapperAddMeta}>
 						<div className={styles.textAddMeta}>To start invest You have to</div>
 						<img className={styles.buttonAddMeta} src={buttonAddMeta} onClick={handlerAddMetamask}></img>
@@ -109,16 +130,16 @@ function MarketSinglePage(): JSX.Element {
 					<img className={styles.bigImage} src={!isEmpty(dataId.files) ? dataId.files[0].url : notImage}></img>
 					<div className={styles.wrapperLittleImages}>
 						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files[0].url : notImage}></img>
-						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length === 2 ? dataId.files[1].url : notImage : notImage}></img>
-						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length === 3 ? dataId.files[2].url : notImage : notImage}></img>
+						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length > 1 ? dataId.files[1].url : notImage : notImage}></img>
+						<img className={styles.littleImage} src={!isEmpty(dataId.files) ? dataId.files.length > 2 ? dataId.files[2].url : notImage : notImage}></img>
 					</div>
 					<div className={styles.wrapperMap} onClick={handlerZoom}>
 						<MapGoogle center={centerMap} zoom={zoom} />
 					</div>
 				</div>
 				<div className={styles.wrapperRight}>
-					{transactionHash ? <div className={styles.wrapperHaveAlready}>
-						<HaveAlreadyInvested amountInvest={amountInvest} />
+					{amountInvest > 0 ? <div className={styles.wrapperHaveAlready}>
+						<HaveAlreadyInvested amountInvest={amountInvest} totalPrice={dataId.total_price}/>
 					</div> : <div></div>}
 					<div className={styles.wrapperRightGrid}>
 						<div className={styles.wrapperInfo}>

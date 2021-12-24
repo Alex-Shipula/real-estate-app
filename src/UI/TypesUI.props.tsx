@@ -12,8 +12,7 @@ export interface SelectFiltersProps
 }
 export interface SelectSortProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    setValue: React.Dispatch<React.SetStateAction<string>>,
-    value: string
+    setValue: React.Dispatch<React.SetStateAction<string>>
 }
 export interface InfoProps {
     assetPrice?: number;
